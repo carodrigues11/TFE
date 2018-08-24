@@ -1,0 +1,28 @@
+
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /connect
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+facebook_login:
+    path: /connect/check-facebook
+
+#FosUserBundle Routes
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+cr_shop:
+    resource: "@CRShopBundle/Resources/config/routing.yml"
+    prefix:   /

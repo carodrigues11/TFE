@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body class="bodyProduit">
+
+        <h1 class="titreProduit">Produits</h1>
+
+        {% block produits %}
+
+            {% for produit in produits %}
+
+                <!-- Produit -->
+                <div class="produitAll col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                    <!-- image qui ouvre une modal  -->
+                    <div class="imgProduit" data-toggle="modal" data-target="#modalProduit{{ produit.id }}" style=" height: 250px; overflow: hidden;">
+                        <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
+
+                    </div> <!-- Image modal - end -->
+
+                    <div class="contentProduit">
+                        <div class="nomProduit">{{ produit.nom }}</div>
+                        <div class="prixProduit">{{ produit.prix }} €/Kg</div>
+                        <div class="quantitéProduit">
+                            <input type="number" value="0" min="0"><label>Kg</label>
+                        </div>
+
+                        <div class="btnProdut">
+                            <a href="#" class="btn-primary editBtn">Ajouter au panier</a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            {% endfor %}
+
+        {% endblock %}
+
+    </body>
+</html>
+
+{% endblock %}

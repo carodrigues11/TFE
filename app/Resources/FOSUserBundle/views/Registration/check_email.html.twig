@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+    {# On charge le css qui se trouvent dans base.html.twig #}
+    {{ parent() }}
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="profile-container">
+        <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    </div>
+{% endblock fos_user_content %}

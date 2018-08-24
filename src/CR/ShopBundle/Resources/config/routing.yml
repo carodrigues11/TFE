@@ -1,0 +1,43 @@
+cr_shop_homepage:
+    path:     /
+    defaults: { _controller: CRShopBundle:Default:index }
+
+produits:
+  path: /produits
+  defaults: { _controller: CRShopBundle:Produits:index }
+
+producteurs:
+  path: /producteurs
+  defaults: { _controller: CRShopBundle:Producteurs:index }
+
+map:
+  path: /map
+  defaults: { _controller: CRShopBundle:Map:index }
+
+apropos:
+  path: /apropos
+  defaults: { _controller: CRShopBundle:Apropos:index }
+
+contact:
+  path: /contact
+  defaults: { _controller: CRShopBundle:Contact:index }
+
+boutique:
+  path: /boutique/{id}
+  defaults: { _controller: CRShopBundle:Producteurs:view }
+
+ajouterPanier:
+  path: /ajouter/{id}
+  defaults: { _controller: CRShopBundle:Panier:ajouter }
+
+supprimerPanier:
+  path: /supprimer/{id}
+  defaults: { _controller: CRShopBundle:Panier:supprimer }
+
+
+
+
+
+
+
+

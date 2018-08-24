@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {# On charge le css qui se trouvent dans base.html.twig #}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block fos_user_content %}
+    <div class="profile-container">
+    <h2 class="profile">Modifier profile</h2>
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock fos_user_content %}

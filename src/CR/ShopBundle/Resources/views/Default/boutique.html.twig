@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body>
+
+    {# Informations sur la boutique à l'id = $id  #}
+    {% for boutique in boutiques %}
+        {% if boutique.id == id %}
+
+        <h1> {{ boutique.nom }}</h1>
+
+        <div class="nomFerme">{{ boutique.adresseBoutique }} - Distance KM</div>
+        <div class="imgFerme"><a href="#"><img  style="width: 30%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a></div>
+        {% endif %}
+
+    {% endfor %}
+
+
+
+    {# Tous les produits de la boutique à l'id = $id  #}
+
+    {% for produit in produits %}
+        {% if produit.boutiqueId == id %}
+
+            <div class="produitBoutique">
+                {{ produit.nom }}
+                <a href="#"><img  style="width: 10%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
+                {{ produit.prix }} €/Kg
+            </div>
+        {% endif %}
+    {% endfor %}
+
+        </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body>
+
+        <h1>Producteurs</h1>
+
+        {% for boutique in boutiques %}
+
+            <div class="producteur" style="margin-bottom: 50px">
+                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 30%; padding: 0;">
+                    <div class="imgProducteur" style="height: 300px; background-color: #0c5460">
+                        <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a>
+                    </div>
+                </div>
+                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 25%; padding: 0;">
+                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
+                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
+                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
+                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
+
+                </div>
+                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                    <div class="nomFerme">
+                        <a href="{{ path('boutique', { 'id': boutique.id }) }}">
+                             {{ boutique.nom }}
+                        </a></div>
+                    <div class="nomFerme">{{ boutique.adresseBoutique }}</div>
+                    <div class="distance">distance</div>
+                    <div class="produit">Eleveur / Agriculteur</div>
+                    <div class="description">
+                        Description :Lorem ipsum dolor sit amet, is nostrud exercitation ullamco. esse cillum dolore eu fugiat nulla pariatur. Eunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <ul>
+                            <li>Catégories / Produit 1</li>
+                            <li>Catégories / Produit 2</li>
+                            <li>Catégories / Produit 3</li>
+                        </ul>
+                    </div>
+                    <div class="btProduit">Voir tous les produits/En savoir plus</div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+    </body>
+</html>
+
+{% endblock %}

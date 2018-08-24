@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {# On charge le css qui se trouvent dans base.html.twig #}
+    {{ parent() }}
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="profile-container">
+        <h2 class="profile">Mon profil</h2>
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <a class="btn-primary editBtn" href="/TFE/web/app_dev.php/profile/edit">Modifier les informations</a>
+    </div>
+{% endblock fos_user_content %}
