@@ -64,6 +64,13 @@ class Produits
      */
     private $description;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="publie", type="boolean")
+     */
+    private $publie = true;
+
 
     /**
      * @var \DateTime
@@ -75,7 +82,7 @@ class Produits
 
     function __construct()
     {
-        $this->date(new \DateTime());
+        $this->date= new \Datetime();
     }
 
 
@@ -110,7 +117,7 @@ class Produits
     /**
      * @var string
      *
-     * @ORM\Column(name="image_id", type="integer", length=11)
+     * @ORM\Column(name="image_id", type="integer", length=11, nullable=true)
      */
     private $imageId;
 
@@ -300,6 +307,31 @@ class Produits
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+
+    /**
+     * Set publie
+     *
+     * @param boolean $publie
+     *
+     * @return Produits
+     */
+    public function setPublie($publie)
+    {
+        $this->publie = $publie;
+
+        return $this;
+    }
+
+    /**
+     * Get publie
+     *
+     * @return bool
+     */
+    public function getPublie()
+    {
+        return $this->publie;
     }
 
     /**

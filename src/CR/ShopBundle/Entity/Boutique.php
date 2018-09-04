@@ -45,6 +45,13 @@ class Boutique
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
@@ -137,6 +144,30 @@ class Boutique
     public function getAdresseBoutique()
     {
         return $this->adresseBoutique;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Boutiques
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

@@ -94,4 +94,27 @@ class User extends FosUser
         return $this->facebook_access_token;
     }
 
+    /**
+     * Set img_profile
+     *
+     * @param string $img_profile
+     *
+     * @return User
+     */
+    public function setImg_profile($img_profile)
+    {
+        $this->img_profile = $img_profile;
+        return $this;
+    }
+
+    /**
+     * Get img_profile
+     *
+     * @return string
+     */
+    public function getImg_profile()
+    {
+        return $this->img_profile;
+    }
+
 }

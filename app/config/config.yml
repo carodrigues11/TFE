@@ -116,3 +116,16 @@ hwi_oauth:
 #                client_id:           [ClientID]
 #                client_secret:       [ClientIDSecret]
 #                scope:               ""
+
+easy_admin:
+    entities:
+        # change the following to the namespaces of your own entities
+        - AppBundle\Entity\User
+        - CR\ShopBundle\Entity\Boutique
+        - CR\ShopBundle\Entity\Produits
+        - CR\ShopBundle\Entity\Images
+
+    site_name: "<img src='{{ asset('web/directory/img/logo.png') }}' style='width: 100px;'> Pré de chez vous"
+    design:
+          brand_color: '#931969'
+          color_scheme: 'light'

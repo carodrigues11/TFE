@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body>
+
+
+    <div class="explication">
+        <h2 class="explicationTitre">Pourquoi s'inscrire sur Pré de chez vous?</h2>
+        <div class="col-1-expl">
+            <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/ferme.jpg" alt="ferme" />
+            <h5>Circuit-court/0 intermédiaire</h5>
+            <p>Contrairement aux produits vendus en supermarché, sur Pré de chez vous, le prix
+                est fixé par le producteur et 97% des bénéfices lui sont reversés. Les 3% seront
+                utilisés au bon fonctionnement du site.</p>
+        </div>
+        <div class="col-2-expl">
+            <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/ferme2.jpg" alt="ferme" />
+            <h5>Court-circuit/Produits locaux</h5>
+            <p>Le second but de ce e-shop est d'éviter de consommer qui aurait parcourus plus
+                de kilométres que ce que l'on parcourt lors de nos vacances, et ainsi éviter toutes polution
+                superflues. De plus, les produits sont donc cueillis au bon moment et vous sont livrés plus frais
+                pour que vous puissiez découvrir un goût plus authentique.</p>
+        </div>
+        <div class="col-3-expl">
+            <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/ferme3.jpeg" alt="ferme" />
+            <h5>Zéro Déchet</h5>
+            <p>Le troisième des principes du site est d'éviter le suremballage inutile.
+                Un produit frais et livré rapidement n'a pas besoin d'être emballé de façon optimale.
+                Donc, ensemble, évitons le plastique inutile pour proteger notre planete et nos océans.
+                Le zéro déchet est un mode de vie beaucoup plus interessant à long therme.</p>
+            <br>
+        </div>
+        <p><a href="#">En savoir plus...</a></p>
+    </div>
+
+
+    <div class="inscriptionAccueil">
+    {% if not is_granted("ROLE_USER") %}
+        <hr>
+
+        <h1>INSCRIVEZ-VOUS</h1>
+
+
+
+
+
+    {% endif %}
+
+        </div>
+
+
+    <hr>
+
+    <div class="producteursListe">
+    {% for boutique in boutiques %}
+
+
+                <div class="producteur" style="margin-bottom: 50px">
+                    <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 30%; padding: 0;">
+                        <div class="imgProducteur" style="height: 300px; background-color: #0c5460">
+                            <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/ferme.jpg" alt="test" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 25%; padding: 0;">
+                        <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
+                        <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
+                        <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
+                        <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
+
+                    </div>
+                    <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                        <div class="nomFerme">
+                            <a href="{{ path('boutique', { 'id': boutique.id }) }}">
+                                Ferme des prairie
+                            </a></div>
+                        <div class="nomFerme">{{ boutique.adresseBoutique }}</div>
+                        <div class="distance">distance</div>
+                        <div class="produit">Eleveur / Agriculteur</div>
+                        <div class="description">
+                            {{ boutique.description }}
+                            <ul>
+                                <li>Catégories / Produit 1</li>
+                                <li>Catégories / Produit 2</li>
+                                <li>Catégories / Produit 3</li>
+                            </ul>
+                        </div>
+                        <div class="btProduit"><a href="#">Voir tous les produits/En savoir plus</a></div>
+                    </div>
+                </div>
+
+    {% endfor %}
+
+    </div>
+
+
+    </body>
+</html>
+
+{% endblock %}

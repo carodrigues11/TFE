@@ -1,0 +1,15 @@
+
+{% block body %}
+<html>
+    <body>
+
+        <h1>Panier</h1>
+
+        {% for sess in session %}
+            <li>{{ sess }}</li>
+        {% endfor %}
+
+    </body>
+</html>
+
+{% endblock %}

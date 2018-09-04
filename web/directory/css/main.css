@@ -24,6 +24,7 @@ li{
 .btnConn{
     text-align: right;
     margin: 20px;
+    display: inline-block;
 }
 
 .btn-primary, .btn-primary:hover{
@@ -36,14 +37,95 @@ li{
     border: none;
 }
 
-.imgPanier{
+.connPanier{
     text-align: right;
-    margin: 15px 15px 0 0;
+    margin: -19px 15px 0 0;
+    position: absolute;
+    right: 0;
 }
 
-.imgPanier img{
+.connPanier img{
     height: 90px;
 }
+
+.nav-item{
+    font-size: 20px;
+}
+
+#mySidebar{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    padding-bottom: 35px;
+}
+
+button.btnClose{
+    text-align: right;
+}
+
+input.inputPanier{
+    background-color: #eeeeee;
+}
+
+
+.contentNavPanier{
+    width: 100%;
+}
+
+/**
+*              Accueil
+ */
+
+
+.explication{
+    display: inline-block;
+    top: 0;
+}
+
+.explicationTitre{
+    text-align: left;
+    margin: 35px 39px;
+}
+
+.col-1-expl, .col-2-expl, .col-3-expl{
+    display: inline-block;
+    width: 30%;
+    margin: 0 10px;
+    vertical-align: top;
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+hr{
+    width: 50%;
+    margin-top: 50px;
+    text-align: center;
+    border-color: lightgrey;
+}
+
+.producteursListe{
+    margin: 100px 0;
+}
+
+
+/**
+*           PRODUITS
+ */
+
+input[type=number]{
+    width: 47px;
+    height: 35px;
+    line-height: 1.65;
+    padding-left: 4px;
+    border: 1px solid #eee;
+    margin-left: 5px;
+}
+
+
+
+
 
 /**
 *              FOSUserBundle -- LOGIN
@@ -209,3 +291,33 @@ input[type="password"]{
 .produitAll{
     margin: 70px 0;
 }
+
+
+
+/*        CONTENT VENDEUR      */
+
+.col-1-vendeur{
+    background-color: #DDDDDD;
+    height: 1000%;
+    padding: 30px;
+}
+
+.col-2-vendeur{
+    padding: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

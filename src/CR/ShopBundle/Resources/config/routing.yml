@@ -1,5 +1,5 @@
 cr_shop_homepage:
-    path:     /
+    path:     /accueil
     defaults: { _controller: CRShopBundle:Default:index }
 
 produits:
@@ -26,16 +26,18 @@ boutique:
   path: /boutique/{id}
   defaults: { _controller: CRShopBundle:Producteurs:view }
 
-ajouterPanier:
+panier:
+  path: /panier
+  defaults: { _controller: CRShopBundle:Panier:index }
+
+ajouter:
   path: /ajouter/{id}
   defaults: { _controller: CRShopBundle:Panier:ajouter }
 
-supprimerPanier:
-  path: /supprimer/{id}
-  defaults: { _controller: CRShopBundle:Panier:supprimer }
 
-
-
+vendeur:
+  path: /vendeur
+  defaults: { _controller: CRShopBundle:Produits:ajout }
 
 
 

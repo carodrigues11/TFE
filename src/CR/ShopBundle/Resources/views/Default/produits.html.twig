@@ -22,11 +22,11 @@
                         <div class="nomProduit">{{ produit.nom }}</div>
                         <div class="prixProduit">{{ produit.prix }} €/Kg</div>
                         <div class="quantitéProduit">
-                            <input type="number" value="0" min="0"><label>Kg</label>
+                            <input type="number" value="0" min="1" max="{{ produit.quantite }}"><label>Kg</label>
                         </div>
 
                         <div class="btnProdut">
-                            <a href="#" class="btn-primary editBtn">Ajouter au panier</a>
+                            <a href="{{ path('ajouter', {'id' : produit.id}) }}" class="btn-primary editBtn">Ajouter au panier</a>
                         </div>
 
                     </div>
