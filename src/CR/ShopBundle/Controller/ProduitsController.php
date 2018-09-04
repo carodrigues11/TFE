@@ -21,15 +21,52 @@ class ProduitsController extends Controller
 {
     public function indexAction()
     {
+        $request = $this->get('request_stack')->getCurrentRequest();
+        $session = $request->getSession();
+
         $em = $this->getDoctrine()->getEntityManager();
         $produit = $em->getRepository("CRShopBundle:Produits")->findAll();
 
 
+        if($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
+
 
         return $this->render('CRShopBundle:Default:produits.html.twig', array(
-            'produits'=>$produit
+            'produits'=>$produit,
+            'panier'=> $panier,
         ));
     }
+
+
+
+    public function produitsAction()
+    {
+
+        $request = $this->get('request_stack')->getCurrentRequest();
+        $session = $request->getSession();
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $produit = $em->getRepository("CRShopBundle:Produits")->findBy(array('disponible'=>1));
+
+        if($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
+
+
+        return $this->render('CRShopBundle:Default:produits.html.twig', array(
+            'produits'=>$produits,
+            'panier'=> $panier,
+
+        ));
+
+    }
+
+
+
 
 
     public function ajoutAction(Request $request){

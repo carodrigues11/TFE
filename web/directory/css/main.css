@@ -16,6 +16,11 @@ li{
     list-style: none;
 }
 
+button, select{
+    background-color: white;
+
+}
+
 
 /**
 *               base.html.twig
@@ -239,6 +244,7 @@ input[type="password"]{
 }
 
 .editBtn{
+    display: none;
     box-sizing: border-box;
     position: relative;
     margin: 0.2em;
@@ -275,7 +281,17 @@ input[type="password"]{
     box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
 }
 
+.produitAll:hover .editBtn {
+    display: inline-block;
+}
 
+.quantite{
+    display: none;
+}
+
+.produitAll:hover .quantite {
+    display: inline-block;
+}
 
 
 /*        CONTENT PRODUITS      */
@@ -290,6 +306,7 @@ input[type="password"]{
 
 .produitAll{
     margin: 70px 0;
+    height: 280px;
 }
 
 
@@ -308,9 +325,13 @@ input[type="password"]{
 }
 
 
+/*        PANIER      */
 
 
 
+.table td{
+    vertical-align: middle;
+}
 
 
 

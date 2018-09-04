@@ -130,9 +130,12 @@
                 <td>12,60€</td>
                 <td><i class="far fa-times-circle"></i></td>
             </tr>
+
             </tbody>
         </table>
     </div>
+
+
     <div class="sousPanierNav">
         <div class="totauxNav">
             <div class="subTotalNav">Sous-total: </div>
@@ -146,8 +149,8 @@
 
 
 
-
     {% block body %}{% endblock %}
+    {% block panier %}{% endblock %}
     {% block javascripts %}
         <script>
 
@@ -155,12 +158,10 @@
                 document.getElementById("mySidebar").style.width = "500px";
                 document.getElementById("mySidebar").style.marginLeft = "69%";
                 document.getElementById("mySidebar").style.display = "block";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
             }
 
             function w3_close(){
                 document.getElementById("mySidebar").style.display = "none";
-                document.body.style.backgroundColor = "rgba(0,0,0,0)";
 
             }
 

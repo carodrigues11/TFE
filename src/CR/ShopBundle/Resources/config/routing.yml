@@ -34,6 +34,10 @@ ajouter:
   path: /ajouter/{id}
   defaults: { _controller: CRShopBundle:Panier:ajouter }
 
+supprimer:
+  path: /supprimer/{id}
+  defaults: { _controller: CRShopBundle:Panier:supprimer }
+
 
 vendeur:
   path: /vendeur

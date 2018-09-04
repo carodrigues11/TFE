@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body>
+
+        <h1>quantite panier</h1>
+{% if produits == 0 %}
+    Aucun produit dans votre panier
+{% elseif produits == 1 %}
+    1 produit dans votre panier
+{% else %}
+     {{ produits }} produit dans votre panier
+{% endif %}
+    </body>
+</html>
+
+{% endblock %}
