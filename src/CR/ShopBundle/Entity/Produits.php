@@ -37,23 +37,23 @@ class Produits
     private $nom;
 
     /**
-     * @var int
+     * @var DECIMAL
      *
-     * @ORM\Column(name="prix", type="integer")
+     * @ORM\Column(name="prix", type="decimal")
      */
     private $prix;
 
     /**
-     * @var int
+     * @var DECIMAL
      *
-     * @ORM\Column(name="promo", type="integer", nullable=true)
+     * @ORM\Column(name="promo", type="decimal", nullable=true)
      */
     private $promo;
 
     /**
-     * @var int
+     * @var DECIMAL
      *
-     * @ORM\Column(name="prix_grossiste", type="integer", nullable=true)
+     * @ORM\Column(name="prix_grossiste", type="decimal", nullable=true)
      */
     private $prixGrossiste;
 
@@ -87,9 +87,9 @@ class Produits
 
 
     /**
-     * @var int
+     * @var DECIMAL
      *
-     * @ORM\Column(name="quantite", type="integer")
+     * @ORM\Column(name="quantite", type="decimal")
      */
     private $quantite;
 
@@ -192,7 +192,7 @@ class Produits
     /**
      * Set prix
      *
-     * @param integer $prix
+     * @param DECIMAL $prix
      *
      * @return Produits
      */
@@ -206,7 +206,7 @@ class Produits
     /**
      * Get prix
      *
-     * @return int
+     * @return decimal
      */
     public function getPrix()
     {
@@ -216,7 +216,7 @@ class Produits
     /**
      * Set promo
      *
-     * @param integer $promo
+     * @param DECIMAL $promo
      *
      * @return Produits
      */
@@ -230,7 +230,7 @@ class Produits
     /**
      * Get promo
      *
-     * @return int
+     * @return decimal
      */
     public function getPromo()
     {
@@ -240,7 +240,7 @@ class Produits
     /**
      * Set prixGrossiste
      *
-     * @param integer $prixGrossiste
+     * @param DECIMAL $prixGrossiste
      *
      * @return Produits
      */
@@ -254,7 +254,7 @@ class Produits
     /**
      * Get prixGrossiste
      *
-     * @return int
+     * @return decimal
      */
     public function getPrixGrossiste()
     {
@@ -337,7 +337,7 @@ class Produits
     /**
      * Set quantite
      *
-     * @param integer $quantite
+     * @param DECIMAL $quantite
      *
      * @return Produits
      */
@@ -351,7 +351,7 @@ class Produits
     /**
      * Get quantite
      *
-     * @return int
+     * @return decimal
      */
     public function getQuantite()
     {

@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% set total = 0  %}
+{% set nbProduit = 0 %}
+
 {% block panier %}
 <html>
     <body>
@@ -78,12 +81,45 @@
                     </form>
                 </tr>
 
+                    {% set total = total + (produit.prix * panier[produit.id]) %}
+                    {% set nbProduit = nbProduit +1 %}
+
                 {% endfor %}
                 </tbody>
             </table>
         </div>
 
-        <a href="{{ path('produits') }}" class="btn-primary editBtn">Continuer mes achats</a>
+        <div class="totauxPanier">
+            <dl class="dl-horizontal pull-right">
+                <div class="nbProduit"><dt>Nombre de produits:</dt><dd>{{ nbProduit }}</dd></div>
+                <div class="nbProduit"><dt>Total:</dt> <dd>{{ total }} €</dd></div>
+            </dl>
+        </div>
+
+
+
+
+        <div class="btnPanier">
+            <div class="btnAchat">
+                <a href="{{ path('produits') }}" class="btn-primary panierBtn">Continuer mes achats</a>
+            </div>
+            <div class="btnPaiement">
+                <div id="status">
+                    <form action="{{ path('panier') }}" method="POST">
+                        <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_L3sbUfakApQKHBZOd53tWNDq"
+                                data-amount="995"
+                                data-name="oc-stripe"
+                                data-description="Widget"
+                                data-locale="auto"
+                                data-currency="eur">
+                        </script>
+                    </form>
+
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>

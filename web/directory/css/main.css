@@ -420,6 +420,27 @@ h3.produitBoutique{
     vertical-align: middle;
 }
 
+.panierBtn{
+    padding: 7px 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.btnPanier{
+    text-align: right;
+    margin: 70px 155px;
+
+}
+
+.btnAchat, .btnPaiement{
+    margin: 10px 0;
+}
+
+.totauxPanier{
+    margin: 70px 155px;
+
+}
+
 
 /*        STRIPE      */
 

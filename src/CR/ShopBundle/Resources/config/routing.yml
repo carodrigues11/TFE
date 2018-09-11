@@ -48,6 +48,10 @@ paiement:
   path: /paiement
   defaults: { _controller: CRShopBundle:Paiement:index }
 
+paiement_checkout:
+  path: /paiement_checkout
+  defaults: { _controller: CRShopBundle:Paiement:index }
+
 categorie:
   path: /categorie/{id}
   defaults: { _controller: CRShopBundle:Categorie:index }
