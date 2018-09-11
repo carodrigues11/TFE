@@ -24,6 +24,4 @@ class CategorieController extends Controller
     }
 
 
-
-
 }
