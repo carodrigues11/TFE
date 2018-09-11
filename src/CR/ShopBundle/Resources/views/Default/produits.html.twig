@@ -4,6 +4,61 @@
 <html>
     <body class="bodyProduit">
 
+        <div class="filtreTri">
+            {# FILTRES DES PRODUITS #}
+            <h4 class="btnFiltre">Filtres:</h4>
+            <div class="filtreProduit">
+                <div class="filtre">
+                    <h6>Catégories</h6>
+                    <ul class="listeCategorie">
+                        <li><a href="/TFE/web/app_dev.php/categorie/1">Epicerie</a></li>
+                        <li><a href="/TFE/web/app_dev.php/categorie/2">Fruits</a></li>
+                        <li><a href="/TFE/web/app_dev.php/categorie/3">Légumes</a></li>
+                        <li><a href="/TFE/web/app_dev.php/categorie/4">Viande et poisson</a></li>
+                    </ul>
+                </div>
+                <div class="filtre">
+                    <h6>Distance</h6>
+                    <!-- Default Slider -->
+                    <div class="sliderDistance">
+                        <input class="mdl-slider mdl-js-slider distanceFiltre" type="range"
+                           min="0" max="100" value="50" tabindex="0">
+                    </div>
+                </div>
+                <div class="filtre">
+                    <h6>Prix</h6>
+                    <!-- Default Slider -->
+                    <div class="sliderDistance">
+                        <input class="mdl-slider mdl-js-slider distanceFiltre" type="range"
+                               min="0" max="100" value="50" tabindex="0">
+                    </div>
+                </div>
+                <div class="filtre filtreBio">
+                    <h6>Bio</h6>
+                    <div class="checkboxFiltre">
+                        <input type="checkbox" class="checkbox" >
+                    </div>
+                </div>
+                <div class="filtre filtreBio">
+                    <h6>Gluten</h6>
+                    <div class="checkboxFiltre">
+                        <input type="checkbox" class="checkbox" >
+                    </div>
+                </div>
+            </div>
+
+            {# TRI DES PRODUITS #}
+            <h4 class="btnTri">Trier par:</h4>
+            <div class="triProduit">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary triBtn">Distance</button>
+                    <button type="button" class="btn btn-primary triBtn">Prix</button>
+                    <button type="button" class="btn btn-primary triBtn">Popularité</button>
+                </div>
+
+            </div>
+        </div>
+
         <h1 class="titreProduit">Produits</h1>
 
         {% block produits %}
@@ -61,6 +116,26 @@
                 </div>
             {% endfor %}
 
+        {% endblock %}
+        {% block javascripts %}
+            <script>
+
+
+            $(".btnFiltre").click(function () {
+                if($(".filtreProduit").css('display','none')){
+                    $(".filtreProduit").css('display','inline-block');
+                } else {
+                    $(".filtreProduit").css('display','none');
+                }
+
+            });
+
+
+
+
+
+
+            </script>
         {% endblock %}
 
     </body>

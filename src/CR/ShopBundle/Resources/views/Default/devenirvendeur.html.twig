@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <body>
+
+        <h1>Devenir vendeur?</h1>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="/TFE/web/app_dev.php/profile/edit" class="devenirVendeur">
+    {% else %}
+            <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
+    {% endif %}
+        <h3>Vendeur</h3>
+        <p>Devenir vendeur sur "Pré de chez vous" vous permettra de fixer le prix, les quantites, ...</p>
+        <p>Différences par rapport à vendeur occasionnel:</p>
+        <ul>
+            <li>- Pas de limite de distance</li>
+            <li>- Accès aux statistiques de ses ventes</li>
+            <li>- 95% de bénéfices</li>
+        </ul>
+    </a>
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="/TFE/web/app_dev.php/profile/edit" class="devenirVendeur">
+    {% else %}
+        <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
+    {% endif %}
+        <h3>Vendeur occasionnel</h3>
+        <p>Devenir vendeur occasionnel sur "Pré de chez vous" vous permettra de fixer le prix, les quantites, ...
+            Pratique pour vendre à ses voisins</p>
+        <p>Différences par rapport à vendeur occasionnel:</p>
+        <ul>
+            <li>- Limite de distance à 10km</li>
+            <li>- Pas d'accès aux statistiques de ses ventes</li>
+            <li>- 100% de bénéfices</li>
+        </ul>
+    </a>
+
+
+
+    </body>
+</html>
+
+{% endblock %}

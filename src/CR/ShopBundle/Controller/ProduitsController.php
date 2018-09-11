@@ -59,8 +59,6 @@ class ProduitsController extends Controller
 
         return $this->render('CRShopBundle:Default:produits.html.twig', array(
             'produits'=>$produits,
-            'panier'=> $panier,
-
         ));
 
     }

@@ -4,17 +4,12 @@
 <html>
     <body>
 
-    {# Informations sur la boutique à l'id = $id  #}
-    {% for boutique in boutiques %}
-        {% if boutique.id == id %}
+    {# Informations sur la categorie à l'id = $id  #}
+    {% for cat in categorie %}
+        {% if cat.id == id %}
         <div class="infoBoutique">
-            <div class="col-1-boutique">
-                <div class="imgBoutique"><a href="#"><img class="imgBoutique" style=" overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a></div>
-            </div>
-            <div class="col-2-boutique">
-                <h1 class="nomBoutique"> {{ boutique.nom }}</h1>
-                <div class="distanceBoutique">{{ boutique.adresseBoutique }} - Distance KM</div>
-                <div class="descriptionBoutique">{{ boutique.description }} - Distance KM</div>
+            <div class="categorieNom">
+                <h1 class="nomBoutique"> {{ cat.nom }}</h1>
             </div>
         </div>
         {% endif %}
@@ -23,11 +18,10 @@
 
 
 
-    {# Tous les produits de la boutique à l'id = $id  #}
+    {# Tous les produits de la categorie à l'id = $id  #}
 
-    <h3 class="produitBoutique">Nos produits</h3>
     {% for produit in produits %}
-        {% if produit.boutiqueId == id %}
+        {% if produit.categories == id %}
 
             <!-- Produit -->
             <div class="produitAll col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">

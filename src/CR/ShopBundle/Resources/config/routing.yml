@@ -6,6 +6,7 @@ produits:
   path: /produits
   defaults: { _controller: CRShopBundle:Produits:index }
 
+
 producteurs:
   path: /producteurs
   defaults: { _controller: CRShopBundle:Producteurs:index }
@@ -43,7 +44,17 @@ vendeur:
   path: /vendeur
   defaults: { _controller: CRShopBundle:Produits:ajout }
 
+paiement:
+  path: /paiement
+  defaults: { _controller: CRShopBundle:Paiement:index }
 
+categorie:
+  path: /categorie/{id}
+  defaults: { _controller: CRShopBundle:Categorie:index }
+
+devenirvendeur:
+  path: /devenirvendeur
+  defaults: { _controller: CRShopBundle:Devenirvendeur:index }
 
 
 

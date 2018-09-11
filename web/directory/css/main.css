@@ -37,6 +37,13 @@ button, select{
     border: none;
 }
 
+.btn-primary:active{
+    background-color: #931969;
+    border: none;
+}
+
+
+
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
     background-color: #931969;
     border: none;
@@ -128,8 +135,42 @@ input[type=number]{
     margin-left: 5px;
 }
 
+.sliderDistance{
+    width: 200px;
+    text-align: center;
+    margin-left: 43%;
+}
 
+.filtreTri{
+    text-align: left;
+    margin-left: 140px;
+}
 
+.filtreProduit{
+    display: none;
+}
+
+.filtre{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 30px;
+    margin-left: 5px;
+
+}
+
+.filtreBio{
+    margin-left: 80px;
+}
+
+.triBtn{
+    background-color: white;
+    color: #931969;
+    border: 1px solid #931969;
+}
+
+.triBtn:active{
+    background-color: #991999;
+}
 
 
 /**
@@ -327,6 +368,52 @@ input[type="password"]{
 
 /*        PANIER      */
 
+.infoBoutique{
+    width: 100%;
+    vertical-align: top;
+    margin-top: 110px;
+}
+
+.col-1-boutique{
+    display: inline-block;
+    margin-left: 110px;
+    vertical-align: top;
+
+}
+
+.col-2-boutique{
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    padding-left: 30px;
+    vertical-align: top;
+
+}
+
+img.imgBoutique{
+    width: 500px;
+}
+
+h1.nomBoutique{
+    margin-bottom: 10px;
+}
+
+.distanceBoutique{
+    color: #bbb;
+    margin-bottom: 25px;
+
+}
+
+.descriptionBoutique{
+    width: 90%;
+}
+
+h3.produitBoutique{
+    margin-top: 100px;
+}
+
+/*        PANIER      */
+
 
 
 .table td{
@@ -334,11 +421,70 @@ input[type="password"]{
 }
 
 
+/*        STRIPE      */
+
+
+.StripeElement {
+    background-color: white;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
 
 
 
+/*        Devenir vendeur      */
+
+.devenirVendeur{
+    display: inline-block;
+    vertical-align: top;
+    width:45%;
+    margin: 40px 10px 100px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    height: 300px;
+    padding-top: 25px;
+}
+
+.devenirVendeur:hover{
+    border: 1px solid #931969;
+    cursor: pointer;
+}
+
+a.devenirVendeur{
+    text-decoration: none;
+    color: black;
+}
+
+a.devenirVendeur:hover{
+    text-decoration: none;
+    color: #931969;
+}
 
 
 
+/*         footer      */
 
 
+.footer{
+    height: 50px;
+    background-color: #931969;
+    color: white;
+    padding: 14px;
+}
