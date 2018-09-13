@@ -1,63 +1,31 @@
+{% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Pré de chez vous!{% endblock %}</title>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+{% block vendeur %}
+    <h1>Mes produits</h1>
 
 
 
+    {% for produit in produits %}
+        <!-- Produit -->
+        <div class="produitAll col-md-4" style="display:inline-block; width: 300px; border: 1px solid #eee; border-radius: 3px;">
+            <!-- image qui ouvre une modal  -->
+            <div class="imgProduit" style=" height: 250px; overflow: hidden;">
+                <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" />
 
+            </div> <!-- Image modal - end -->
 
+            <div class="contentProduit">
+                <div class="nomProduit">{{ produit.nom }}</div>
+                <div class="prixProduit">{{ produit.prix }} €/Kg</div>
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="{{ asset('directory/css/main.css') }}">
-
-    {% endblock %}
-
-
-</head>
-
-
-{% block body %}
-<html>
-    <body>
-    {% if not is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-2 col-1-vendeur">
-                    <h1><a href="/TFE/web/app_dev.php/">Pré de chez vous</a></h1>
-                    <ul>
-                        <li><a href="#">Mes produits</a></li>
-                        <li><a href="#">Ajouter un produit</a></li>
-                        <li><a href="#">Mes ventes</a></li>
-                        <li><a href="#">Messages privés</a></li>
-                        <li><a href="#">Commentaires & votes</a></li>
-                    </ul>
-                </div>
-                <div class=" col-lg-10 col-2-vendeur">
-                    <h1>Mes produits</h1>
-                </div>
+            </div>
+            <div>
+                <button class="btn-primary btn">X</button>
+                <button class="btn-primary btn">Modifier</button>
             </div>
         </div>
 
 
+    {% endfor %}
 
-    {% else %}
-        <h1>Page vendeur</h1>
-
-        Vous n'avez pas accès à la page reservé aux vendeurs
-    {% endif %}
-
-    </body>
-</html>
-
-{% endblock %}
+        {% endblock %}

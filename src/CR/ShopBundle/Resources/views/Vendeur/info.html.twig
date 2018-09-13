@@ -1,0 +1,10 @@
+{% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
+
+{% block vendeur %}
+    <h1>Informations de ma boutique</h1>
+
+    {% for info in infos %}
+        <p>{{ info.nom }}</p>
+    {% endfor %}
+
+{% endblock %}

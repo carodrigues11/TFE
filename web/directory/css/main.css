@@ -436,18 +436,41 @@ input[type="password"]{
 
 
 
-/*        CONTENT VENDEUR      */
+/*        CONTENT VENDEUR ADMIN      */
 
-.col-1-vendeur{
-    background-color: #DDDDDD;
-    height: 1000%;
-    padding: 30px;
+.headerMenu{
+    padding: 5px;
+    border-bottom: 1px solid grey;
 }
 
-.col-2-vendeur{
-    padding: 30px;
+.headerMenu img{
+    margin-left: 30px;
+}
+
+.menuAdmin{
+    width: 190px;
+    height: 100%;
+    background-color: #931969;
+    padding: 25px;
+    display: inline-block;
+    padding-top: 50px;
+}
+
+.menuAdmin li{
+    margin-bottom: 10px;
 
 }
+
+.menuAdmin a{
+    color: white;
+
+}
+.contentAdmin{
+    display: inline-block;
+    vertical-align: top;
+    margin: 40px 60px;
+}
+
 
 
 /*        PANIER      */

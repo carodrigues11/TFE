@@ -36,9 +36,14 @@
 
         <div class="connPanier">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-            <div class="panier"  onclick="w3_open()" style="cursor: pointer;">
+            <!--<div class="panier"  onclick="w3_open()" style="cursor: pointer;">
                 <img src="{{ asset('directory/img/panier.png') }}"/>
             </div>
+            -->
+            <div class="panier" style="cursor: pointer;">
+                <a href="/TFE/web/app_dev.php/panier"><img src="{{ asset('directory/img/panier.png') }}"/></a>
+            </div>
+
             <div class="btnConn">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div class="dropdown">

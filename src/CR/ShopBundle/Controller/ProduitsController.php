@@ -135,7 +135,7 @@ class ProduitsController extends Controller
 
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
-        return $this->render('CRShopBundle:Vendeur:vendeur.html.twig', array(
+        return $this->render('CRShopBundle:Vendeur:ajoutproduit.html.twig', array(
             'form' => $form->createView()
         ));
 

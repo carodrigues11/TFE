@@ -22,6 +22,8 @@ apropos:
 contact:
   path: /contact
   defaults: { _controller: CRShopBundle:Contact:index }
+  requirements:
+          _method:  GET
 
 boutique:
   path: /boutique/{id}
@@ -42,11 +44,30 @@ supprimer:
 
 vendeur:
   path: /vendeur
+  defaults: { _controller: CRShopBundle:Vendeur:show }
+
+vendeur_ajoutproduit:
+  path: /vendeur/ajoutproduit
   defaults: { _controller: CRShopBundle:Produits:ajout }
 
-vendeur_mesproduits:
-  path: /vendeur/mesproduits
-  defaults: { _controller: CRShopBundle:Vendeur:show }
+vendeur_mesventes:
+  path: /vendeur/mesventes
+  defaults: { _controller: CRShopBundle:Vendeur:vente }
+
+vendeur_messages:
+  path: /vendeur/message
+  defaults: { _controller: CRShopBundle:Vendeur:message }
+
+vendeur_comment:
+  path: /vendeur/comment
+  defaults: { _controller: CRShopBundle:Vendeur:comment }
+
+vendeur_info:
+  path: /vendeur/info
+  defaults: { _controller: CRShopBundle:Vendeur:info }
+
+
+
 
 paiement:
   path: /paiement
