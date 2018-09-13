@@ -6,7 +6,7 @@
 
         <h1>Devenir vendeur?</h1>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="/TFE/web/app_dev.php/profile/edit" class="devenirVendeur">
+        <a href="/TFE/web/app_dev.php/creationprofilvendeur" class="devenirVendeur">
     {% else %}
             <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
     {% endif %}
@@ -21,7 +21,7 @@
     </a>
 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="/TFE/web/app_dev.php/profile/edit" class="devenirVendeur">
+        <a href="/TFE/web/app_dev.php/creationprofilvendeurocc" class="devenirVendeur">
     {% else %}
         <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
     {% endif %}

@@ -4,8 +4,19 @@
 <html>
     <body>
 
-        a propos
 
+
+    {% if is_granted("ROLE_VENDEUR") %}
+        <h1>Création du profil vendeur </h1>
+        <div class="well">
+            {{ form(form) }}
+        </div>
+    {% else %}
+
+
+        <p>Vous êtes déjà vendeur.</p>
+        <a href="{{ path('vendeur') }}">Votre profil</a>
+    {% endif %}
     </body>
 </html>
 

@@ -115,6 +115,8 @@ class ProduitsController extends Controller
 
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
+
+
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->redirectToRoute('vendeur', array('id' => $produit->getId()));
             }
@@ -123,12 +125,9 @@ class ProduitsController extends Controller
 
 
 
-
-
-
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
-        return $this->render('CRShopBundle:Default:vendeur.html.twig', array(
+        return $this->render('CRShopBundle:Vendeur:vendeur.html.twig', array(
             'form' => $form->createView()
         ));
 

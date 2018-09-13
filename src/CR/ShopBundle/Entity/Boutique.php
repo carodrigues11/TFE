@@ -45,6 +45,27 @@ class Boutique
     /**
      * @var string
      *
+     * @ORM\Column(name="code_postal", type="string", length=255)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
+     */
+    private $pays;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
@@ -144,6 +165,78 @@ class Boutique
     public function getAdresseBoutique()
     {
         return $this->adresseBoutique;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Boutiques
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Boutiques
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set pays
+     *
+     * @param string $pays
+     *
+     * @return Boutiques
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return string
+     */
+    public function getPays()
+    {
+        return $this->pays;
     }
 
     /**

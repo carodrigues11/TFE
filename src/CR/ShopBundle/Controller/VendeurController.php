@@ -8,6 +8,10 @@ class VendeurController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CRShopBundle:Default:vendeur.html.twig');
+
+        $user = $this->getUser();
+
+
+        return $this->render('CRShopBundle:Vendeur:vendeur.html.twig');
     }
 }

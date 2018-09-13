@@ -60,5 +60,12 @@ devenirvendeur:
   path: /devenirvendeur
   defaults: { _controller: CRShopBundle:Devenirvendeur:index }
 
+creation_profil_vendeur:
+  path: /creationprofilvendeur
+  defaults: { _controller: CRShopBundle:Profilvendeur:index }
+
+creation_profil_vendeur_occ:
+  path: /creationprofilvendeurocc
+  defaults: { _controller: CRShopBundle:Profilvendeurocc:index }
 
 
