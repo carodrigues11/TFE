@@ -8,36 +8,35 @@
 
         {% for boutique in boutiques %}
 
-            <div class="producteur" style="margin-bottom: 50px">
-                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 30%; padding: 0;">
-                    <div class="imgProducteur" style="height: 300px; background-color: #0c5460">
-                        <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a>
+            <div class="producteur">
+                <div class="col-md-5">
+                    <div class="imgProducteur">
+                        <a href="#"><img src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a>
                     </div>
                 </div>
-                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 25%; padding: 0;">
-                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
-                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460; margin-bottom: 5px;"></div>
-                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
-                    <div class="col-md-6" style="display: inline-block; vertical-align: top;  width: 150px; height: 148px; padding: 0; background-color: #0c5460"></div>
 
-                </div>
-                <div class="col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                <div class="col-md-7 detailProducteur">
                     <div class="nomFerme">
                         <a href="{{ path('boutique', { 'id': boutique.id }) }}">
                              {{ boutique.nom }}
                         </a></div>
-                    <div class="nomFerme">{{ boutique.adresseBoutique }}</div>
-                    <div class="distance">distance</div>
-                    <div class="produit">Eleveur / Agriculteur</div>
-                    <div class="description">
+                    <div class="rueFerme">{{ boutique.adresseBoutique }} - 7km</div>
+                    <div class="typeFerme">Eleveur / Agriculteur</div>
+                    <div class="descriptionFerme">
                         {{ boutique.description }}
-                        <ul>
-                            <li>Catégories / Produit 1</li>
-                            <li>Catégories / Produit 2</li>
-                            <li>Catégories / Produit 3</li>
-                        </ul>
+                        <div class="container containerFerme">
+                            <div>Catégories:</div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">Epicerie</a>
+                                <a href="#" class="list-group-item">Légumes</a>
+                                <a href="#" class="list-group-item">Fruits</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="btProduit">Voir tous les produits/En savoir plus</div>
+                    <div class="btnFermeDiv">
+                        <button class="btnFerme"><a href="{{ path('boutique', { 'id': boutique.id }) }}">
+                            Voir tous les produits
+                        </a></button></div>
                 </div>
             </div>
         {% endfor %}

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "DINbek Light";
 }
 
 a{
@@ -170,6 +171,89 @@ input[type=number]{
 
 .triBtn:active{
     background-color: #991999;
+}
+
+
+/**
+*              PRODUCTEURS
+ */
+
+.producteur{
+    margin: 20px 130px;
+    display: inline-block;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+
+.producteur:hover{
+    border: 1px solid #931969;
+
+}
+
+.imgProducteur {
+    overflow: hidden;
+    text-align: right;
+    height: 340px;
+}
+
+.imgProducteur img{
+    width: 350px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.detailProducteur{
+    text-align: left;
+}
+
+.nomFerme a{
+    font-family: "DIN Alternate";
+    font-size: 30px;
+}
+
+.rueFerme{
+    color: #ccc;
+    margin-top: -7px;
+    margin-bottom: 10px;
+}
+
+.descriptionFerme{
+    width: 580px;
+}
+
+.containerFerme{
+    margin-left: 170px;
+}
+
+.list-group-item{
+    width: 200px;
+    text-align: center;
+}
+
+.btnFermeDiv{
+    text-align: right;
+}
+
+.btnFerme{
+    color: white;
+    background-color: #931969;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+
+}
+
+.btnFerme a{
+    color: white;
+}
+
+.btnFerme a:hover{
+    text-decoration: none;
+}
+
+.btnFerme:hover{
+    background-color: #CC0066;
 }
 
 

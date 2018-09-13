@@ -108,6 +108,107 @@
         {% endif %}
     {% endfor %}
 
+
+
+
+    <!-- Modal -->
+
+
+
+    {% for produit in produits %}
+        {% for boutique in boutiques %}
+
+
+            <div class="modal fade" id="modalProduit{{ produit.id }}" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            {{ produit.nom }}
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top; overflow: hidden;">
+                                <div class="imgProduitModal" style="background-color: #0c5460; width: 100%; height: 300px; text-align: center;"><img  style="width: 350px; overflow: hidden; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></div>
+                            </div>
+                            <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top;">
+                                <div class="nomProduitModal">{{ produit.nom }}</div>
+                                <div class="producteurProduitModal"><a href="{{ path('boutique', { 'id': produit.boutiqueId }) }}">{{ boutique.nom }}</a> </div>
+                                <div class="distanceProduitModal"><a href="map">Distance + lien map</a> </div>
+                                <div class="prixProduitModal">{{ produit.prix }} €/Kg</div>
+                                <div class="descriptionProduitModal">{{ produit.description }}</div>
+                                {% if panier[produit.id] is not defined %}
+
+                                    <div class="quantitéProduit">
+                                        <form action="{{ path('ajouter',{'id':produit.id})}}" method="get">
+                                            <select class="quantite" name="quantite">
+                                                {% for i in 1..10 %}
+                                                    <option value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <div class="btnProduit">
+                                                <button  class="btn-primary editBtn">Ajouter au panier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                {% else %}
+                                    <form action="{{ path('ajouter', { 'id' : produit.id}) }}" method="get">
+                                        <div class="quantite">Modifier les quantités:</div>
+                                        <div>
+                                            <select class="quantite" name="quantite" onchange="this.form.submit()">
+                                                {% for i in 1..10 %}
+                                                    <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="noteTotal">note total:<img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"></div>
+                        <div>
+                            <div class="note"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"></div>
+                            <div class="comment">
+                                <div class="nomComment">Paul</div>
+                                <div class="msg">Délicieux produit, je recommande.</div>
+                            </div>
+                        </div>
+
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {% for user in user %}
+                                <div>
+                                    <div class="ecrireNote"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"></div>
+                                    <div class="comment">
+                                        <div class="ecrireNomComment">
+                                            <input type="text" placeholder="{{ user.nom }}">
+                                        </div>
+                                        <div class="ecrireMsg">
+                                            <textarea rows="4" cols="50"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <a href="/TFE/web/app_dev.php/login">Connectez-vous pour écrire un commentaire</a>
+                        {% endif %}
+
+                        <div class="modal-footer">
+                            <div class="btnProduit">
+                                <button  class="btn btn-primary">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endfor %}
+
+
+
+
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2eQqOq9LagnwlJFYKCFbpfbKEtZugOBs&callback=initMap"></script>
 
 

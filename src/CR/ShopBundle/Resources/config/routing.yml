@@ -44,6 +44,10 @@ vendeur:
   path: /vendeur
   defaults: { _controller: CRShopBundle:Produits:ajout }
 
+vendeur_mesproduits:
+  path: /vendeur/mesproduits
+  defaults: { _controller: CRShopBundle:Vendeur:show }
+
 paiement:
   path: /paiement
   defaults: { _controller: CRShopBundle:Paiement:index }

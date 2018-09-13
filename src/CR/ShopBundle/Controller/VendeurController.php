@@ -14,4 +14,17 @@ class VendeurController extends Controller
 
         return $this->render('CRShopBundle:Vendeur:vendeur.html.twig');
     }
+
+
+
+    public function showAction()
+    {
+
+        return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig');
+
+
+    }
+
+
+
 }
