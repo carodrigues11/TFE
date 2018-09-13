@@ -24,8 +24,12 @@ class ProduitsController extends Controller
         $request = $this->get('request_stack')->getCurrentRequest();
         $session = $request->getSession();
 
+        $value = "";
+
         $em = $this->getDoctrine()->getEntityManager();
         $produit = $em->getRepository("CRShopBundle:Produits")->findAll();
+        $boutiques = $em->getRepository("CRShopBundle:Boutique")->findAll();
+        $user = $this->getUser();
 
 
         if($session->has('panier'))
@@ -37,8 +41,12 @@ class ProduitsController extends Controller
         return $this->render('CRShopBundle:Default:produits.html.twig', array(
             'produits'=>$produit,
             'panier'=> $panier,
+            'boutiques'=>$boutiques,
+            'user'=>$user
         ));
     }
+
+
 
 
 
