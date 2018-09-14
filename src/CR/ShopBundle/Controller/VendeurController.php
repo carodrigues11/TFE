@@ -3,6 +3,8 @@
 namespace CR\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use CR\ShopBundle\Entity\Produits;
+use Symfony\Component\HttpFoundation\Response;
 
 class VendeurController extends Controller
 {
@@ -12,7 +14,9 @@ class VendeurController extends Controller
         $user = $this->getUser();
 
 
-        return $this->render('CRShopBundle:Vendeur:vendeur.html.twig');
+        return $this->render('CRShopBundle:Vendeur:menuvendeur.html.twig', array(
+            'user'=>$user,
+        ));
     }
 
 
@@ -62,8 +66,9 @@ class VendeurController extends Controller
 
         $em = $this->getDoctrine()->getEntityManager();
 
-        $userId = $this->getUser();
+        $userId = $this->getUser()->getId();
         $infos = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
+
 
 
         return $this->render('CRShopBundle:Vendeur:info.html.twig', array(
@@ -71,6 +76,20 @@ class VendeurController extends Controller
         ));
     }
 
+
+    public function  supprimerAction(Produits $produit){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($produit);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success','Produit bien supprimé');
+
+
+        return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig');
+
+
+    }
 
 
 }

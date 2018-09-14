@@ -46,6 +46,10 @@ vendeur:
   path: /vendeur
   defaults: { _controller: CRShopBundle:Vendeur:show }
 
+vendeur_produit_supprimer:
+  path: /vendeur_produit_supprimer/{id}
+  defaults: { _controller: CRShopBundle:Vendeur:supprimer }
+
 vendeur_ajoutproduit:
   path: /vendeur/ajoutproduit
   defaults: { _controller: CRShopBundle:Produits:ajout }

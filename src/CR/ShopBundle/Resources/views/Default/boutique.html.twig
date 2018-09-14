@@ -176,19 +176,17 @@
                         </div>
 
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {% for user in user %}
                                 <div>
                                     <div class="ecrireNote"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"><img src="{{app.request.basepath}}/directory/img/note.png" style="width: 10px"></div>
                                     <div class="comment">
                                         <div class="ecrireNomComment">
-                                            <input type="text" placeholder="{{ user.nom }}">
+                                            <input type="text" placeholder="{{ user.username }}">
                                         </div>
                                         <div class="ecrireMsg">
                                             <textarea rows="4" cols="50"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
                         {% else %}
                             <a href="/TFE/web/app_dev.php/login">Connectez-vous pour écrire un commentaire</a>
                         {% endif %}

@@ -4,7 +4,7 @@ namespace CR\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
+use AppBundle\Entity\User;
 
 class ProducteursController extends Controller
 {
@@ -32,12 +32,13 @@ class ProducteursController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $boutique = $em->getRepository("CRShopBundle:Boutique")->findAll();
         $produit = $em->getRepository("CRShopBundle:Produits")->findAll();
-
+        $user = $this->getUser();
 
 
         return $this->render('CRShopBundle:Default:boutique.html.twig', array(
             'boutiques'=>$boutique,
             'produits'=>$produit,
+            'user'=>$user,
             'id'=>$id
         ));
     }

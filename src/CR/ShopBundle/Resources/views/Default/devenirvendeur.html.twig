@@ -11,6 +11,9 @@
             <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
     {% endif %}
         <h3>Vendeur</h3>
+            {% if is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
+                <p>Vous êtes déjà vendeur</p>
+            {% endif %}
         <p>Devenir vendeur sur "Pré de chez vous" vous permettra de fixer le prix, les quantites, ...</p>
         <p>Différences par rapport à vendeur occasionnel:</p>
         <ul>
@@ -26,7 +29,10 @@
         <a href="/TFE/web/app_dev.php/register" class="devenirVendeur">
     {% endif %}
         <h3>Vendeur occasionnel</h3>
-        <p>Devenir vendeur occasionnel sur "Pré de chez vous" vous permettra de fixer le prix, les quantites, ...
+            {% if is_granted("ROLE_VENDEUR_OCC") or is_granted("ROLE_ADMIN") %}
+                <p>Vous êtes déjà vendeur occasionnel</p>
+            {% endif %}
+            <p>Devenir vendeur occasionnel sur "Pré de chez vous" vous permettra de fixer le prix, les quantites, ...
             Pratique pour vendre à ses voisins</p>
         <p>Différences par rapport à vendeur occasionnel:</p>
         <ul>

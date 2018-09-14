@@ -29,25 +29,38 @@
 {% block body %}
 <html>
     <body>
-    {% if not is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
+    {% if  is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
         <div class="admin">
-            <div class="headerMenu"><a href="/TFE/web/app_dev.php/"><img src="{{ asset('directory/img/logo.png') }}" style="width: 50px"></a>
-            </div>
-            <div class="menuAdmin">
+            <div class=" menuAdmin">
+                <div class="adminLogo">
+                    <a href="/TFE/web/app_dev.php/"><img src="{{ asset('directory/img/logo.png') }}" style="width: 50px"></a>
+                </div>
                 <ul>
-                    <li><a href="/TFE/web/app_dev.php/vendeur">Mes produits</a></li>
-                    <li><a href="/TFE/web/app_dev.php/vendeur/ajoutproduit">Ajouter un produit</a></li>
-                    <li><a href="/TFE/web/app_dev.php/vendeur/mesventes">Mes ventes</a></li>
-                    <li><a href="/TFE/web/app_dev.php/vendeur/message">Messages privés</a></li>
-                    <li><a href="/TFE/web/app_dev.php/vendeur/comment">Commentaires & votes</a></li>
-                    <li><a href="/TFE/web/app_dev.php/vendeur/info">Mes infos</a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur"><i class="fas fa-list"></i><div>Mes produits</div></a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur/ajoutproduit"><i class="fas fa-plus-circle"></i><div>Ajouter un produit</div></a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur/mesventes"><i class="fas fa-chart-line"></i><div>Mes ventes</div></a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur/message"><i class="far fa-envelope"></i><div>Messages privés</div></a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur/comment"><i class="far fa-comments"></i><div>Commentaires & votes</div></a></li>
+                    <li><a href="/TFE/web/app_dev.php/vendeur/info"><i class="fas fa-info-circle"></i><div>Mes infos</div></a></li>
                 </ul>
             </div>
-            <div class="contentAdmin">
-                {% block vendeur %}
-                {% endblock %}
+            <div class="col-vendeur">
+                <div class="headerMenu">
+                    <div class="profilAdmin dropdown">
+                        <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"><i class="fas fa-user"></i>
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TFE/web/app_dev.php/profile">Nom user en cours</a></li>
+                            <li><a href="/TFE/web/app_dev.php/">Retour à la partie client</a></li>
+                            <li><a href="/TFE/web/app_dev.php/logout">Deconnexion</a></li>
+                        </ul>
+                    </div>
 
-
+                </div>
+                <div class="contentAdmin">
+                    {% block vendeur %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
 
@@ -55,8 +68,12 @@
 
     {% else %}
         <h1>Page vendeur</h1>
+        <div>
+            <p>Vous n'avez pas accès à la page reservé aux vendeurs.</p>
+        </div>
+        <div><a href="/TFE/web/app_dev.php/">Retour à l'accueil</a></div>
+        <div><a href="/TFE/web/app_dev.php/devenirvendeur">Devenir vendeur</a></div>
 
-        Vous n'avez pas accès à la page reservé aux vendeurs
     {% endif %}
 
     </body>

@@ -94,7 +94,7 @@ class ProduitsController extends Controller
             ->add('bio',   CheckboxType::class)
             ->add('gluten',   CheckboxType::class)
             ->add('image',   TextType::class)
-            ->add('imageID',   IntegerType::class)
+            ->add('imageID',   TextType::class)
             ->add('categories',   IntegerType::class)
             ->add('publie',   CheckboxType::class)
             ->add('dateCreation',      DateType::class)

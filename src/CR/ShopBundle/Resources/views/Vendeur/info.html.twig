@@ -1,10 +1,56 @@
 {% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
 
 {% block vendeur %}
-    <h1>Informations de ma boutique</h1>
+    <h5 style="color:#bbb; margin-left: -55px;">Informations de ma boutique</h5>
 
-    {% for info in infos %}
-        <p>{{ info.nom }}</p>
-    {% endfor %}
+    <div class="infos">
+        <div class="infos1">
+            <h2 class="nomInfo"">{{ infos.nom }} <div class="infoEdit"><i class="far fa-edit" style="font-size: 20px; color:#931969;"></i></div></h2>
+            <div class="imageInfo" style="height: 400px; overflow: hidden; ">
+                <img  style="text-align: center; width: 40%;  overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{infos.image}}" alt="{{ infos.nom }}" />
+            </div>
+            <div class="descriptionInfo">{{ infos.description }}</div>
+        </div>
+        <div class="infos2">
+            <div class="detailInfo">
+                <br>
+                <div class="rueInfo">{{ infos.adresseBoutique }}</div>
+                <div class="villeInfo">{{ infos.codePostal }} - {{ infos.ville }}</div>
+                <div class="paysInfo">{{ infos.pays }}</div>
+            </div>
+            <div class="map" id="map" style="width: 550px; height:350px; background-color:grey;"></div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        var street = "Belgique";
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('map'), {zoom: 15});
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({'address': street}, function(results, status) {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    window.alert('Geocode was not successful for the following reason: ' +
+                        status);
+                }
+
+
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2eQqOq9LagnwlJFYKCFbpfbKEtZugOBs&callback=initMap"></script>
+
+
 
 {% endblock %}

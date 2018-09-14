@@ -50,7 +50,11 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-user"></i></button>
                     <ul class="dropdown-menu  dropdown-menu-right">
                         <li><a href="profile">Mon profil</a></li>
+                        {% if is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
+                            <li><a href="/TFE/web/app_dev.php/vendeur">Administration</a></li>
+                        {% else %}
                         <li><a href="/TFE/web/app_dev.php/devenirvendeur">Devenir vendeur</a></li>
+                        {% endif %}
                         <li><a href="/TFE/web/app_dev.php/logout">Déconnexion</a></li>
                     </ul>
                 </div>

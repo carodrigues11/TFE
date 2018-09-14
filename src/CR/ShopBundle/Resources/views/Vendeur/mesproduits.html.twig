@@ -1,26 +1,37 @@
 {% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
 
 {% block vendeur %}
-    <h1>Mes produits</h1>
+    <div>
+        <h1>Mes produits</h1>
+        <div class="btnNewProduit" style="text-align: right; margin-right: 133px">
+            <a href="/TFE/web/app_dev.php/vendeur/ajoutproduit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Produit</a>
+        </div>
+    </div>
 
-
+    <div style="text-align: center; padding-right: 122px">
 
     {% for produit in produits %}
         <!-- Produit -->
-        <div class="produitAll col-md-4" style="display:inline-block; width: 300px; border: 1px solid #eee; border-radius: 3px;">
+        <div class="col-md-4 mesProduits ">
             <!-- image qui ouvre une modal  -->
-            <div class="imgProduit" style=" height: 250px; overflow: hidden;">
+            <div class="imgMesProduit" style=" height: 250px; overflow: hidden; vertical-align: middle">
                 <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" />
 
             </div> <!-- Image modal - end -->
 
-            <div class="contentProduit">
-                <div class="nomProduit">{{ produit.nom }}</div>
-                <div class="prixProduit">{{ produit.prix }} €/Kg</div>
+            <div class="contentMesProduit">
+                <div class="nomMesProduit">{{ produit.nom }}</div>
+                <div class="prixMesProduit">{{ produit.prix }} €/Kg</div>
+                {% if  produit.quantite < 50 %}
+                <div class="quantiteMesProduit" style="color:red; font-family: 'DIN Alternate';">{{ produit.quantite }}Kg en stock</div>
+                {% else %}
+                <div class="quantiteMesProduit">{{ produit.quantite }}Kg en stock</div>
+                {% endif %}
 
-            </div>
+
+                    </div>
             <div>
-                <button class="btn-primary btn">X</button>
+                <a href="{{ path('vendeur_produit_supprimer', {'id':produit.id}) }}"><i class="far fa-times-circle"></i></a>
                 <button class="btn-primary btn">Modifier</button>
             </div>
         </div>
@@ -28,4 +39,6 @@
 
     {% endfor %}
 
-        {% endblock %}
+    </div>
+
+{% endblock %}
