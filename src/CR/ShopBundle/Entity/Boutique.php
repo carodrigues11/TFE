@@ -64,6 +64,21 @@ class Boutique
     private $pays;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="latitude", type="float", length=255)
+     */
+    private $latitude;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitude", type="float", length=255)
+     */
+    private $longitude;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
@@ -237,6 +252,54 @@ class Boutique
     public function getPays()
     {
         return $this->pays;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param float $latitude
+     *
+     * @return Boutiques
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param float $longitude
+     *
+     * @return Boutiques
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     /**

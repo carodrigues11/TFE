@@ -79,7 +79,7 @@ paiement:
 
 paiement_checkout:
   path: /paiement_checkout
-  defaults: { _controller: CRShopBundle:Paiement:index }
+  defaults: { _controller: CRShopBundle:Paiement:checkout }
 
 categorie:
   path: /categorie/{id}

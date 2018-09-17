@@ -12,14 +12,20 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ProfilvendeurController extends Controller
 {
     public function indexAction(Request $request)
     {
 
+        $today = getDate();
         $user = $this->getUser();
         $userManager = $this->container->get('fos_user.user_manager');
+        $userId = $this->getUser()->getId();
+
+
+
 
 
         // On crée un objet Advert
@@ -30,15 +36,41 @@ class ProfilvendeurController extends Controller
 
         // On ajoute les champs de l'entité que l'on veut à notre formulaire
         $formBuilder
-            ->add('dateInscription',      DateType::class)
-            ->add('userId',     IntegerType::class)
-            ->add('nom',   TextType::class)
-            ->add('adresseBoutique',    TextType::class)
-            ->add('codePostal',    TextType::class)
-            ->add('image',    TextType::class)
-            ->add('ville',    TextType::class)
-            ->add('pays',    TextType::class)
-            ->add('description',    TextareaType::class)
+            ->add('dateInscription',      DateType::class, array(
+                'placeholder' => array(
+                                    'year' => $today['year'], 'month' => $today['mon'], 'day' => $today['mday']
+                                )
+            ))
+            ->add('userId',     HiddenType::class, array(
+                'data' => $userId
+            ))
+            ->add('nom',   TextType::class, array(
+                'data' => 'Nom',
+            ))
+            ->add('adresseBoutique',    TextType::class, array(
+                'data' => 'Adresse',
+            ))
+            ->add('codePostal',    TextType::class, array(
+                'data' => 'Code postal',
+            ))
+            ->add('image',    TextType::class, array(
+                'data' => 'Image',
+            ))
+            ->add('ville',    TextType::class, array(
+                'data' => 'Ville',
+            ))
+            ->add('pays',    TextType::class, array(
+                'data' => 'Pays',
+            ))
+            ->add('description',    TextareaType::class, array(
+                'data' => 'Description',
+            ))
+            ->add('latitude',    HiddenType::class, array(
+                'data' => 'lat',
+            ))
+            ->add('longitude',    HiddenType::class, array(
+                'data' => 'lng',
+            ))
             ->add('save',      SubmitType::class)
         ;
         // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard

@@ -4,7 +4,7 @@
 <html>
     <body>
 
-    <div id="map" style="width:100%;height:400px;"></div>
+    <div id="map2" style="width:100%;height:400px;"></div>
 
 
     {# Informations sur la boutique à l'id = $id  #}
@@ -22,28 +22,35 @@
         </div>
 
 
+
+
+
+
+
+
         <script>
-            var street = "Sydney";
+
+            //Affichage de la Map + curseur à l'adresse de la boutique
+            var latitude = {{ boutique.latitude }};
+            var longitude = {{ boutique.longitude }};
+
             function initMap() {
 
-                var map = new google.maps.Map(document.getElementById('map'), {zoom: 15});
-                var geocoder = new google.maps.Geocoder;
-                geocoder.geocode({'address': street}, function(results, status) {
-                    if (status === 'OK') {
-                        map.setCenter(results[0].geometry.location);
-                        new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location
-                        });
-                    } else {
-                        window.alert('Geocode was not successful for the following reason: ' +
-                            status);
-                    }
+
+                var map = new google.maps.Map(document.getElementById('map2'), {
+                    zoom: 12
+                });
 
 
+                map.setCenter(new google.maps.LatLng(latitude,longitude));
+                new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(latitude,longitude)
                 });
             }
         </script>
+
+
 
 
 
@@ -207,7 +214,7 @@
 
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2eQqOq9LagnwlJFYKCFbpfbKEtZugOBs&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3qCo2eBujbleMezhW0flhbjnZvH9_oUs&callback=initMap"></script>
 
 
 

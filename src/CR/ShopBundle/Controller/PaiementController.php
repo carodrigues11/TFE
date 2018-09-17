@@ -16,8 +16,11 @@ class PaiementController extends Controller
         return $this->render('CRShopBundle:Default:paiement.html.twig');
     }
 
-    public function checkoutAction(Request $request)
+    public function checkoutAction()
     {
+
+
+
         \Stripe\Stripe::setApiKey("sk_test_5LsCslQIJ4K5M6eV818LQMoU");
 
         // Get the credit card details submitted by the form
@@ -31,6 +34,9 @@ class PaiementController extends Controller
                 "source" => $token,
                 "description" => "Paiement Stripe - PRE DE CHEZ VOUS!"
             ));
+
+
+
             $this->addFlash("success","Bravo ça marche !");
             return $this->redirectToRoute("order_prepare");
         } catch(\Stripe\Error\Card $e) {
@@ -39,6 +45,10 @@ class PaiementController extends Controller
             return $this->redirectToRoute("order_prepare");
             // The card has been declined
         }
+
+
+
+
     }
 
 }

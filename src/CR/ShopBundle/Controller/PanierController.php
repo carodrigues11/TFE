@@ -87,7 +87,6 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $produits = $em->getRepository('CRShopBundle:Produits')->findArray(array_keys($session->get('panier')));
 
-
         return $this->render('CRShopBundle:Default:panier.html.twig',array(
             'produits'=>$produits,
             'panier'=>$session->get('panier')
