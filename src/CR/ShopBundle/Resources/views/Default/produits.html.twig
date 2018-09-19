@@ -52,7 +52,7 @@
             <div class="triProduit">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary triBtn">Distance</button>
-                    <button type="button" class="btn btn-primary triBtn">Prix</button>
+                    <a href="{{ path('produits',{'tri': 'prix', 'order':'asc'}) }}"><button type="button" class="btn btn-primary triBtn">Prix</button></a>
                     <button type="button" class="btn btn-primary triBtn">Popularité</button>
                 </div>
 

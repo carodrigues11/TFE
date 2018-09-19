@@ -15,26 +15,35 @@ class VendeurController extends Controller
 
 
         return $this->render('CRShopBundle:Vendeur:menuvendeur.html.twig', array(
-            'user'=>$user,
+            'user' => $user,
         ));
+
     }
 
 
     public function showAction()
     {
 
-        $userId = $this->getUser()->getId();
+        if( $this->isGranted('IS_AUTHENTICATED_FULLY') ) {
 
 
-        $em = $this->getDoctrine()->getEntityManager();
-        $boutiqueId = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
-        $produits = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
+            $userId = $this->getUser()->getId();
+
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $boutiqueId = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
+            $produits = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
 
 
 
-        return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig',array(
-            'produits'=>$produits
-        ));
+            return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig',array(
+                'produits'=>$produits
+            ));
+        } else {
+
+            return $this->render('CRShopBundle:Default:devenirvendeur.html.twig');
+        }
+
     }
 
     public function venteAction()
@@ -67,6 +76,7 @@ class VendeurController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $userId = $this->getUser()->getId();
+
         $infos = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
 
 

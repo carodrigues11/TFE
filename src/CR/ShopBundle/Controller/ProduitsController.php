@@ -38,6 +38,8 @@ class ProduitsController extends Controller
             $panier = false;
 
 
+
+
         return $this->render('CRShopBundle:Default:produits.html.twig', array(
             'produits'=>$produit,
             'panier'=> $panier,
@@ -47,6 +49,14 @@ class ProduitsController extends Controller
     }
 
 
+    public function triAction($tri,$order)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $produit = $em->getRepository('CRShopBundle:Produits')->findBy(array(),array($tri=>$order));
+
+        return array('produit' => $produit,
+            );
+    }
 
 
 

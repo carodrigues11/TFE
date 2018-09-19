@@ -20,12 +20,70 @@
         <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="{{ asset('directory/css/main.css') }}">
 
+        <style>
+
+            .titreVendeur{
+                color:#bbb;
+                margin-left: -55px;
+            }
+
+            .formulaireAjout{
+                margin-left: 150px;
+                margin-bottom: 50px;
+            }
+
+            .formAjout input{
+                width: 300px;
+                margin : 4px 5px;
+                font-size: 20px;
+                padding: 2px 3px;
+                border-radius: 3px;
+                border: none;
+                background-color: #fff;
+                box-shadow: 3px 4px 16px #ddd;
+                text-align: left;
+            }
+
+            .formAjout textarea{
+                width: 300px;
+                margin : 4px 5px;
+                font-size: 20px;
+                padding: 2px 3px;
+                border-radius: 3px;
+                border: none;
+                background-color: #fff;
+                box-shadow: 3px 4px 16px #ddd;
+
+            }
+
+            .formAjout input[type=checkbox]{
+                box-shadow: none;
+            }
+
+            .formAjout label{
+                display: block;
+                margin-left: 3px;
+                margin-bottom: 0;
+            }
+
+            .formAjout button{
+                background-color: #931969;
+                color: white;
+                border-radius: 3px;
+                border: none;
+                padding: 3px 5px;
+                margin: 5px;
+            }
+
+        </style>
     {% endblock %}
 
 
 </head>
-
-
+{#
+{% if({{ path(/TFE/web/app_dev.php/vendeur) }}) %}background-color: #CC0066;
+    border-left: 3px solid #218838;{% endif %}
+#}
 {% block body %}
 <html>
     <body>
@@ -50,9 +108,9 @@
                         <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"><i class="fas fa-user"></i>
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="/TFE/web/app_dev.php/profile">Nom user en cours</a></li>
-                            <li><a href="/TFE/web/app_dev.php/">Retour à la partie client</a></li>
-                            <li><a href="/TFE/web/app_dev.php/logout">Deconnexion</a></li>
+                            <li><a href="/TFE/web/app_dev.php/profile" style="padding: 10px;">Nom user en cours</a></li>
+                            <li><a href="/TFE/web/app_dev.php/" style="padding: 10px;">Retour à la partie client</a></li>
+                            <li><a href="/TFE/web/app_dev.php/logout" style="padding: 10px;">Deconnexion</a></li>
                         </ul>
                     </div>
 
@@ -67,14 +125,21 @@
 
 
     {% else %}
-        <h1>Page vendeur</h1>
-        <div>
-            <p>Vous n'avez pas accès à la page reservé aux vendeurs.</p>
-        </div>
-        <div><a href="/TFE/web/app_dev.php/">Retour à l'accueil</a></div>
-        <div><a href="/TFE/web/app_dev.php/devenirvendeur">Devenir vendeur</a></div>
 
+        <div style="text-align: center; margin-top: 100px;">
+            <div>
+                <a href="/TFE/web/app_dev.php/"><img src="{{ asset('directory/img/logo.png') }}" style="width: 90px; margin-bottom: 50px;"></a>
+
+                <h4>Vous n'avez pas accès à la page reservé aux vendeurs.</h4>
+            </div>
+            <div><b><a href="/TFE/web/app_dev.php/">Retour à l'accueil</a></div>
+            <div><a href="/TFE/web/app_dev.php/devenirvendeur">Devenir vendeur</a></b></div>
+        </div>
     {% endif %}
+
+
+
+
 
     </body>
 </html>

@@ -6,6 +6,10 @@ produits:
   path: /produits
   defaults: { _controller: CRShopBundle:Produits:index }
 
+produits_tri:
+  path: /produits/{tri}/{order}
+  defaults: { _controller: CRShopBundle:Produits:tri }
+
 
 producteurs:
   path: /producteurs
@@ -98,3 +102,6 @@ creation_profil_vendeur_occ:
   defaults: { _controller: CRShopBundle:Profilvendeurocc:index }
 
 
+recherche:
+  path: /recherche
+  defaults: { _controller: CRShopBundle:Recherche:index }

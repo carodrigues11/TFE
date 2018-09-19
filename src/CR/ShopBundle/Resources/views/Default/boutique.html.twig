@@ -4,19 +4,20 @@
 <html>
     <body>
 
+
     <div id="map2" style="width:100%;height:400px;"></div>
 
 
     {# Informations sur la boutique à l'id = $id  #}
     {% for boutique in boutiques %}
-        {% if boutique.id == id %}
+            {% if boutique.id == id %}
         <div class="infoBoutique">
             <div class="col-1-boutique">
                 <div class="imgBoutique"><a href="#"><img class="imgBoutique" style=" overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a></div>
             </div>
             <div class="col-2-boutique">
                 <h1 class="nomBoutique"> {{ boutique.nom }}</h1>
-                <div class="distanceBoutique">{{ boutique.adresseBoutique }} - Distance KM</div>
+                <div class="distanceBoutique">{{ boutique.adresseBoutique }} {{ boutique.ville }}- <dist id="distance"></dist> KM</div>
                 <div class="descriptionBoutique">{{ boutique.description }} </div>
             </div>
         </div>
@@ -34,13 +35,13 @@
             var latitude = {{ boutique.latitude }};
             var longitude = {{ boutique.longitude }};
 
-            function initMap() {
 
+
+            function initMap() {
 
                 var map = new google.maps.Map(document.getElementById('map2'), {
                     zoom: 12
                 });
-
 
                 map.setCenter(new google.maps.LatLng(latitude,longitude));
                 new google.maps.Marker({
@@ -48,6 +49,19 @@
                     position: new google.maps.LatLng(latitude,longitude)
                 });
             }
+
+            //Calculer distance
+
+            var lat1 = 51.454545;
+            var lat2 = 50.454545;
+            var lon1 = 5.454545;
+            var lon2 = 4.454545;
+
+            var dist_metres = 11*10000*Math.sqrt(Math.pow(latitude-lat2,2)+Math.pow(longitude-lon2,2));
+            var dist_km = Math.round((100 / (dist_metres/1000)) * 100) / 100;
+
+            document.getElementById("distance").innerHTML =  dist_km ;
+
         </script>
 
 

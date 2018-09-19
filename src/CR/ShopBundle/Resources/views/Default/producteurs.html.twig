@@ -20,7 +20,7 @@
                         <a href="{{ path('boutique', { 'id': boutique.id }) }}">
                              {{ boutique.nom }}
                         </a></div>
-                    <div class="rueFerme">{{ boutique.adresseBoutique }} - 7km</div>
+                    <div class="rueFerme">{{ boutique.adresseBoutique }} {{ boutique.ville }}  <dist class="distance" id="distance" class="distance"></dist></div>
                     <div class="typeFerme">Eleveur / Agriculteur</div>
                     <div class="descriptionFerme">
                         {{ boutique.description }}
@@ -39,7 +39,31 @@
                         </a></button></div>
                 </div>
             </div>
+
+
+            <script>
+                //Calculer distance
+
+
+                var latitude = {{ boutique.latitude }};
+                var longitude = {{ boutique.longitude }};
+
+                var lat2 = 50.454545;
+                var lon2 = 4.454545;
+
+                var dist_metres = 11*10000*Math.sqrt(Math.pow(latitude-lat2,2)+Math.pow(longitude-lon2,2));
+                var dist_km = Math.round((100 / (dist_metres/1000)) * 100) / 100;
+
+                if(dist_km != 0) {
+                    document.getElementById("distance").innerHTML = "- "+  dist_km  +" km";
+                    document.getElementsByClassName("distance").innerHTML = "- "+  dist_km  +" km";
+                }
+
+            </script>
+
+
         {% endfor %}
+
 
 
 

@@ -1,10 +1,13 @@
 {% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
 
-{% block vendeur %}
-    <h1>Mes produits</h1>
 
+{% block vendeur %}
+    <h2 style="margin-bottom: 30px; margin-left: 100px"> Ajouter un produit</h5>
+
+    <div class="formulaireAjout">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_widget(form,{ 'attr': {'class': 'formAjout'} }) }}
     {{ form_end(form) }}
+    </div>
 
 {% endblock %}

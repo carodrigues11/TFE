@@ -1,7 +1,7 @@
 {% extends 'CRShopBundle:Vendeur:menuvendeur.html.twig' %}
 
 {% block vendeur %}
-    <h5 style="color:#bbb; margin-left: -55px;">Informations de ma boutique</h5>
+    <h5 class="titreVendeur">Informations de ma boutique</h5>
 
     <div class="infos">
         <div class="infos1">
@@ -9,7 +9,7 @@
             <div class="imageInfo" style="height: 400px; overflow: hidden; ">
                 <img  style="text-align: center; width: 40%;  overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{infos.image}}" alt="{{ infos.nom }}" />
             </div>
-            <div class="descriptionInfo">{{ infos.description }}</div>
+            <div class="descriptionInfo" style="width: 85%">{{ infos.description }}</div>
         </div>
         <div class="infos2">
             <div class="detailInfo">

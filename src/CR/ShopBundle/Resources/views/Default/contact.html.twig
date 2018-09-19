@@ -6,7 +6,50 @@
 
     <h1>Formulaire de contact</h1>
 
+<form class="form-horizontal contact-form" role="form" method="post" action="#">
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="name" name="nom"
+                   placeholder="Name" value="Nom" >
+        </div>
+    </div>
+    @if(errors->has('nom'))
+    <span class='help-block'>
+    </span>
+    @endif
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="Email" value="email" >
+        </div>
+    </div>
+    @if(errors->has('email'))
+    <span class='help-block'>
+    </span>
+    @endif
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="subject" name="objet"
+                   placeholder="Subject" value="objet">
+        </div>
+    </div>
+    @if(errors->has('objet'))
+    <span class='help-block'>
+    </span>
+    @endif
+    <div class="form-group">
+    <div class="col-md-12">
+			<textarea class="form-control" rows="6" name="content"
+                      placeholder="Write Massage"  >Contenu</textarea>
+    </div>
+    @if(errors->has('content'))
+    <span class='help-block'>
+</span>
+@endif
+</div>
+<button type="submit" name="submit" class="btn send-btn">send massage</button>
 
+</form>
 
 
 
