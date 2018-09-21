@@ -74,6 +74,9 @@ vendeur_info:
   path: /vendeur/info
   defaults: { _controller: CRShopBundle:Vendeur:info }
 
+error_vendeur:
+  path: /vendeur/error
+  defaults: { _controller: CRShopBundle:Vendeur:error }
 
 
 
@@ -100,6 +103,7 @@ creation_profil_vendeur:
 creation_profil_vendeur_occ:
   path: /creationprofilvendeurocc
   defaults: { _controller: CRShopBundle:Profilvendeurocc:index }
+
 
 
 recherche:

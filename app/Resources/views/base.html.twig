@@ -50,7 +50,7 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-user"></i></button>
                     <ul class="dropdown-menu  dropdown-menu-right">
                         <li><a href="profile" style="padding: 2px 10px;">Mon profil</a></li>
-                        {% if is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") or is_granted("ROLE_VENDEUR_OCC") %}
                             <li><a href="/TFE/web/app_dev.php/vendeur" style="padding: 2px 10px;">Administration</a></li>
                         {% else %}
                         <li><a href="/TFE/web/app_dev.php/devenirvendeur" style="padding: 2px 10px;">Devenir vendeur</a></li>

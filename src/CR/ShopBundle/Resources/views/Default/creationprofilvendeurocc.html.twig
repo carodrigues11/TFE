@@ -1,12 +1,170 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<html>
-    <body>
+    <html>
+    <head>
+        <style>
 
-        <h1>Création du profil vendeur occasionnel</h1>
+            .formulaire{
+                background-color: white;
+                margin-bottom: 50px;
+            }
+
+            .form input{
+                width: 300px;
+                margin : 4px 5px;
+                font-size: 20px;
+                padding: 2px 3px;
+                border-radius: 3px;
+                border: none;
+                background-color: #eee;
+            }
+
+            .form textarea{
+                width: 300px;
+                margin : 4px 5px;
+                font-size: 20px;
+                padding: 2px 3px;
+                border-radius: 3px;
+                border: none;
+                background-color: #eee;
+            }
+
+            .form label{
+                display: none;
+            }
+
+            .form button{
+                background-color: #931969;
+                color: white;
+                border-radius: 3px;
+                border: none;
+                padding: 3px 5px;
+                margin: 5px;
+            }
+
+
+        </style>
+    </head>
+    <body id="body">
+
+
+
+    {% if not is_granted("ROLE_VENDEUR") %}
+        <h1>Création du profil vendeur occasionnel </h1>
+        <div class="formulaire">
+
+
+            {{ form(form, { 'attr': {'class': 'form'} }) }}
+
+        </div>
+
+        <div class="map" id="map" style="width: 550px; height:350px; background-color:grey;"></div>
+
+    {% else %}
+
+
+        <p>Vous êtes déjà vendeur.</p>
+        <a href="{{ path('vendeur') }}">Votre profil</a>
+    {% endif %}
+
+
+
+
+
+    <script>
+        $('.form input').click(function () {
+            $(this).val('');
+        });
+
+        $('.form textarea').click(function () {
+            $(this).val('');
+        });
+
+
+
+
+
+
+        //ajouter coords Lat et Long en fonction de l'adresse
+
+
+
+        function initMap() {
+
+            //var latitude = 50.484843;
+            //var longitude = 4.537122;
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12
+            });
+
+
+            map.setCenter(new google.maps.LatLng(latitude, longitude));
+            new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(latitude, longitude)
+            });
+
+
+        }
+
+        $('#form_save').click(function () {
+            //$('#form_latitude').val(latitude);
+            //$('#form_longitude').val(longitude);
+
+            var adresseBoutique = document.getElementById('form_adresseBoutique').value;
+            var adresseCP = document.getElementById('form_codePostal').value;
+            var adresseVille = document.getElementById('form_ville').value;
+            var adressePays = document.getElementById('form_pays').value;
+
+            var adresse = adresseBoutique+' '+adresseCP+' '+adresseVille+' '+adressePays;
+
+            //var address = document.getElementById('address').value;
+
+            var geocoder = new google.maps.Geocoder();
+
+
+            geocoder.geocode( { 'address': adresse}, function(results, status){
+
+
+                if(status =='OK'){
+
+                    var latLong = results[0].geometry.location;
+                    latitude = latLong.lat();
+                    longitude = latLong.lng();
+
+                    $('#form_latitude').val(latitude);
+                    $('#form_longitude').val(longitude);
+
+
+                } else {
+                    alert('Erreur, impossible de geocoder car: ' + status);
+                }
+            });
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2eQqOq9LagnwlJFYKCFbpfbKEtZugOBs&callback=initMap"></script>
+
+
+
 
     </body>
-</html>
+    </html>
 
 {% endblock %}

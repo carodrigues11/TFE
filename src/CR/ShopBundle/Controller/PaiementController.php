@@ -20,7 +20,7 @@ class PaiementController extends Controller
     {
 
 
-
+        
         \Stripe\Stripe::setApiKey("sk_test_5LsCslQIJ4K5M6eV818LQMoU");
 
         // Get the credit card details submitted by the form
@@ -38,7 +38,7 @@ class PaiementController extends Controller
 
 
             $this->addFlash("success","Bravo ça marche !");
-            return $this->redirectToRoute("order_prepare");
+            return $this->redirect($this->generateUrl('panier'));
         } catch(\Stripe\Error\Card $e) {
 
             $this->addFlash("error","Snif ça marche pas :(");

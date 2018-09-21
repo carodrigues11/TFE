@@ -28,7 +28,7 @@ class ProfilvendeurController extends Controller
 
 
 
-        // On crée un objet Advert
+        // On crée un objet Boutique
         $boutique = new Boutique();
 
         // On crée le FormBuilder grâce au service form factory

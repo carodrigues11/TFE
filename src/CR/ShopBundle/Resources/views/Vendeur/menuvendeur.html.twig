@@ -87,7 +87,7 @@
 {% block body %}
 <html>
     <body>
-    {% if  is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
+    {% if  is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") or is_granted("ROLE_VENDEUR_OCC") %}
         <div class="admin">
             <div class=" menuAdmin">
                 <div class="adminLogo">
@@ -96,10 +96,13 @@
                 <ul>
                     <li><a href="/TFE/web/app_dev.php/vendeur"><i class="fas fa-list"></i><div>Mes produits</div></a></li>
                     <li><a href="/TFE/web/app_dev.php/vendeur/ajoutproduit"><i class="fas fa-plus-circle"></i><div>Ajouter un produit</div></a></li>
+
+        {% if  is_granted("ROLE_VENDEUR") or is_granted("ROLE_ADMIN") %}
                     <li><a href="/TFE/web/app_dev.php/vendeur/mesventes"><i class="fas fa-chart-line"></i><div>Mes ventes</div></a></li>
                     <li><a href="/TFE/web/app_dev.php/vendeur/message"><i class="far fa-envelope"></i><div>Messages privés</div></a></li>
                     <li><a href="/TFE/web/app_dev.php/vendeur/comment"><i class="far fa-comments"></i><div>Commentaires & votes</div></a></li>
                     <li><a href="/TFE/web/app_dev.php/vendeur/info"><i class="fas fa-info-circle"></i><div>Mes infos</div></a></li>
+        {% endif %}
                 </ul>
             </div>
             <div class="col-vendeur">

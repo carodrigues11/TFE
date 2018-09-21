@@ -10,11 +10,13 @@
 
     <div style="text-align: center; padding-right: 122px">
 
+
+
     {% for produit in produits %}
         <!-- Produit -->
         <div class="col-md-4 mesProduits ">
             <!-- image qui ouvre une modal  -->
-            <div class="imgMesProduit" style=" height: 250px; overflow: hidden; vertical-align: middle">
+            <div class="imgMesProduit"  data-toggle="modal" data-target="#modalProduit{{ produit.id }}"  style=" height: 250px; overflow: hidden; vertical-align: middle">
                 <img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" />
 
             </div> <!-- Image modal - end -->
@@ -35,6 +37,59 @@
                 <button class="btn-primary btn">Modifier</button>
             </div>
         </div>
+
+
+
+
+
+        <!-- Modal -->
+
+
+
+        {% for produit in produits %}
+
+
+                <div class="modal fade" id="modalProduit{{ produit.id }}" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                {{ produit.nom }}
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top; overflow: hidden;">
+                                    <div class="imgProduitModal" style="background-color: #0c5460; width: 100%; height: 300px; text-align: center;"><img  style="width: 350px; overflow: hidden; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></div>
+                                </div>
+                                <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top;">
+                                    <div class="nomProduitModal">{{ produit.nom }}</div>
+                                    <div class="prixProduitModal">{{ produit.prix }} €/Kg</div>
+                                    <div class="prixProduitModal">{{ produit.promo }} €/Kg</div>
+                                    <div class="prixProduitModal">{{ produit.prixGrossiste }} €/Kg</div>
+                                    <div class="prixProduitModal">{{ produit.quantite }} €/Kg</div>
+                                    <div class="descriptionProduitModal">{{ produit.description }}</div>
+                                    <div class="descriptionProduitModal">{% if produit.bio == 1 %}Bio{% else %}Non-bio{% endif %}  </div>
+                                    <div class="descriptionProduitModal">{% if produit.gluten == 1 %}Sans gluten{% else %}Avec gluten{% endif %}  </div>
+                                    <div class="prixProduitModal">{{ produit.categories }} - afficher nom</div>
+                                    <div class="descriptionProduitModal">{% if produit.publie == 1 %}Publié{% else %}Non publié{% endif %}  </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="modal-footer">
+                                <div class="btnProduit">
+                                    <button  class="btn btn-primary">Modifier</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        {% endfor %}
+
+
 
 
     {% endfor %}
