@@ -675,8 +675,15 @@ h3.produitBoutique{
 }
 
 .devenirVendeur:hover{
-    border: 1px solid #931969;
+    border: 1.5px solid #931969;
     cursor: pointer;
+    font-family: "DIN Alternate";
+    box-shadow: 7px 3px 20px #ddd;
+}
+
+.devenirVendeur:hover .devenirVendeur p{
+    font-family: "DIN Alternate";
+
 }
 
 a.devenirVendeur{
@@ -690,6 +697,53 @@ a.devenirVendeur:hover{
 }
 
 
+
+/*         PAGINATION      */
+
+.pagination{
+    margin: 100px 0;
+}
+
+
+.page, .last, .next, .current, .previous, .first{
+    border: 1px solid #931969;
+    padding: 8px 10px;
+    margin: 0;
+    color: #931969;
+    vertical-align: middle;
+}
+
+.first{
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.last{
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+/*
+.page a:hover, .next a:hover, .last a:hover, .current:hover, .first a:hover, .previous a:hover{
+    background-color: #931969;
+    color: white;
+
+}
+
+*/
+.page:hover .page, .next:hover , .last:hover, .first:hover, .previous:hover{
+    background-color: #931969;
+}
+
+.page:hover .page a, .next:hover , .last:hover, .first:hover, .previous:hover{
+    color: white;
+}
+
+.current{
+    background-color: #931969;
+    color: white;
+    font-size: 17px;
+}
 
 /*         footer      */
 

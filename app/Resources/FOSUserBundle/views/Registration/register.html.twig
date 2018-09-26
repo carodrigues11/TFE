@@ -3,6 +3,46 @@
 {% block stylesheets %}
     {# On charge le css qui se trouvent dans base.html.twig #}
     {{ parent() }}
+
+    <style>
+
+
+
+        .formulaire{
+            background-color: white;
+            margin: 50px 50px 100px 40%;
+            width: 150px;
+        }
+
+        .fos_user_registration_register input{
+            width: 300px;
+            margin : 6px 5px;
+            font-size: 20px;
+            padding: 3px 3px;
+            border: none;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fos_user_registration_register label{
+            display: block;
+            text-align: left;
+            color: #bbb;
+        }
+
+        .fos_user_registration_register input[type=submit]{
+            background-color: #931969;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            padding: 3px 5px;
+            margin: 5px;
+            margin-left: 55px;
+            width: 200px;
+            font-size: 15px;
+        }
+
+    </style>
 {% endblock %}
 
 {% block fos_user_content %}
@@ -10,11 +50,13 @@
     <div class="profile-container">
         <h2 class="profile">Inscription</h2>
 
-    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-        <div>
-            <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'registration.submit'|trans }}" />
+        <div class="formulaire">
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {{ form_widget(form) }}
+                <div>
+                    <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'registration.submit'|trans }}" />
+                </div>
+            {{ form_end(form) }}
         </div>
-    {{ form_end(form) }}
     </div>
 {% endblock fos_user_content %}

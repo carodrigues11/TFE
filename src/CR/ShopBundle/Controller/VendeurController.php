@@ -11,7 +11,6 @@ class VendeurController extends Controller
     public function indexAction()
     {
 
-        $user = $this->getUser();
 
 
         return $this->render('CRShopBundle:Vendeur:menuvendeur.html.twig', array(
@@ -28,16 +27,28 @@ class VendeurController extends Controller
 
 
             $userId = $this->getUser()->getId();
+            $userName = $this->getUser()->getUsername();
+
+
+            $request = $this->get('request_stack')->getCurrentRequest();
 
 
             $em = $this->getDoctrine()->getEntityManager();
             $boutiqueId = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
-            $produits = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
+            $listeMesProduit = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
 
+
+
+            $produits  = $this->get('knp_paginator')->paginate(
+                $listeMesProduit,
+                $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+                6/*nbre d'éléments par page*/
+            );
 
 
             return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig',array(
-                'produits'=>$produits
+                'produits'=>$produits,
+                'user'=>$userName
             ));
         } else {
 
@@ -49,11 +60,17 @@ class VendeurController extends Controller
     public function venteAction()
     {
 
+
+        $userName = $this->getUser()->getUsername();
+
+
         if($this->getUser() != null ) {
             if( $this->isGranted('ROLE_VENDEUR_OCC') ) {
                 return $this->render('CRShopBundle:Vendeur:error.html.twig');
             }
-            return $this->render('CRShopBundle:Vendeur:mesventes.html.twig');
+            return $this->render('CRShopBundle:Vendeur:mesventes.html.twig', array(
+                'user'=>$userName
+            ));
         } else {
             return $this->redirect($this->generateUrl('produits'));
         }
@@ -62,12 +79,17 @@ class VendeurController extends Controller
     public function messageAction()
     {
 
+        $userName = $this->getUser()->getUsername();
+
+
         if($this->getUser() != null ) {
             if( $this->isGranted('ROLE_VENDEUR_OCC') ) {
                 return $this->render('CRShopBundle:Vendeur:error.html.twig');
             }
 
-            return $this->render('CRShopBundle:Vendeur:message.html.twig');
+            return $this->render('CRShopBundle:Vendeur:message.html.twig', array(
+                'user'=>$userName
+            ));
         } else {
             return $this->redirect($this->generateUrl('produits'));
         }
@@ -77,13 +99,16 @@ class VendeurController extends Controller
     public function commentAction()
     {
 
+        $userName = $this->getUser()->getUsername();
 
         if($this->getUser() != null ) {
 
             if( $this->isGranted('ROLE_VENDEUR_OCC') ) {
                 return $this->render('CRShopBundle:Vendeur:error.html.twig');
             }
-            return $this->render('CRShopBundle:Vendeur:comment.html.twig');
+            return $this->render('CRShopBundle:Vendeur:comment.html.twig', array(
+                'user'=>$userName
+            ));
 
         } else {
             return $this->redirect($this->generateUrl('vendeur_error'));
@@ -93,6 +118,7 @@ class VendeurController extends Controller
     public function infoAction()
     {
 
+        $userName = $this->getUser()->getUsername();
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -109,6 +135,7 @@ class VendeurController extends Controller
 
             return $this->render('CRShopBundle:Vendeur:info.html.twig', array(
                 'infos'=> $infos,
+                'user'=>$userName
             ));
         } else {
             return $this->redirect($this->generateUrl('produits'));

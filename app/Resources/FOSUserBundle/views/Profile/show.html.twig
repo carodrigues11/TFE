@@ -4,13 +4,68 @@
 {% block stylesheets %}
     {# On charge le css qui se trouvent dans base.html.twig #}
     {{ parent() }}
+
+    <style>
+
+        .formulaire{
+            background-color: white;
+            margin: 50px 0 100px 41%;
+            width: 250px;
+            text-align: left;
+        }
+
+        .labelProfil{
+            font-family: "DIN Alternate";
+            display: inline-block;
+        }
+
+        .btnform{
+            display: block;
+            text-align: center;
+            background-color: #931969;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            padding: 3px 0;
+            margin: 20px;
+            width: 200px;
+            font-size: 15px;
+        }
+
+        .dataForm{
+            text-align: right;
+            display: inline-block;
+        }
+    </style>
 {% endblock %}
 
 {% block fos_user_content %}
     <div class="profile-container">
         <h2 class="profile">Mon profil</h2>
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-        <a class="btn-primary editBtn" href="/TFE/web/app_dev.php/profile/edit">Modifier les informations</a>
+        <div class="formulaire">
+            <p><div class="labelProfil">{{ 'profile.show.username'|trans }}:</div><div class="dataForm">{{ user.username }}</div> </p>
+            <p><div class="labelProfil">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+
+
+            <p><div class="labelProfil">Role(s):</div>
+                        {% if(user.roles[0] == "ADMIN" ) %}
+                             Administrateur
+                        {% elseif(user.roles[0] == "ROLE_VENDEUR" ) %}
+                             Vendeur
+                        {% elseif(user.roles[0] == "ROLE_VENDEUR_OCC" ) %}
+                             Vendeur occasionnel
+                        {% else %}
+                             Client
+                        {% endif %}
+
+
+            </p>
+
+            <p><div class="labelProfil">Adresse:</div> {{ user.adresse }}</p>
+            <p><div class="labelProfil">Code postal:</div> {{ user.codePostal }}</p>
+            <p><div class="labelProfil">Ville:</div> {{ user.ville }}</p>
+            <p><div class="labelProfil">Pays:</div> {{ user.pays }}</p>
+            <a class="btn-primary btnform" href="/TFE/web/app_dev.php/profile/edit">Modifier les informations</a>
+        </div>
     </div>
 {% endblock fos_user_content %}

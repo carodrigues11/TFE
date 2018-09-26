@@ -6,7 +6,40 @@
 
         <h1>Producteurs</h1>
 
-        {% for boutique in boutiques %}
+
+
+        <div style="text-align: left; margin-left: 200px">
+            <h4 class="btnTri">Trier par:</h4>
+            <div class="triProduit">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary triBtn triDistance">Distance</button>
+                    <button type="button" class="btn btn-primary triBtn triAlpha">Alphabétique</button>
+                    <button type="button" class="btn btn-primary triBtn">Popularité</button>
+                </div>
+            </div>
+        </div>
+
+        <script>//Trier
+
+            $('.triAlpha').click(function () {
+                {% set tri = 'nom' %}
+            });
+
+            $('.triDistance').click(function () {
+                {% set tri = 'ville' %}
+            });
+
+
+
+        </script>
+
+
+
+        {% for boutique in boutiques %}  {# ASC ou DESC #}
+
+
+
+
 
             <div class="producteur">
                 <div class="col-md-5">
@@ -20,7 +53,7 @@
                         <a href="{{ path('boutique', { 'id': boutique.id }) }}">
                              {{ boutique.nom }}
                         </a></div>
-                    <div class="rueFerme">{{ boutique.adresseBoutique }} {{ boutique.ville }}  <dist class="distance" id="distance" class="distance"></dist></div>
+                    <div class="rueFerme">{{ boutique.adresseBoutique }} {{ boutique.ville }}  <dist class="distance"><script>document.write("- "+  dist_km  +" km");</script></dist></div>
                     <div class="typeFerme">Eleveur / Agriculteur</div>
                     <div class="descriptionFerme">
                         {{ boutique.description }}
@@ -55,15 +88,17 @@
                 var dist_km = Math.round((100 / (dist_metres/1000)) * 100) / 100;
 
                 if(dist_km != 0) {
-                    document.getElementById("distance").innerHTML = "- "+  dist_km  +" km";
-                    document.getElementsByClassName("distance").innerHTML = "- "+  dist_km  +" km";
+                    document.getElementsByClassName("distance")[0].innerHTML = "- "+  dist_km  +" km";
                 }
 
-            </script>
+
+
+                </script>
 
 
         {% endfor %}
 
+        <div class="text-center">{{ knp_pagination_render(boutiques) }}</div>
 
 
 

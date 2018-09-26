@@ -20,7 +20,7 @@ class PaiementController extends Controller
     {
 
 
-        
+
         \Stripe\Stripe::setApiKey("sk_test_5LsCslQIJ4K5M6eV818LQMoU");
 
         // Get the credit card details submitted by the form

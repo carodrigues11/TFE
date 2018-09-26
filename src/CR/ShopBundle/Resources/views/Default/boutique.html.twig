@@ -5,13 +5,19 @@
     <body>
 
 
-    <div id="map2" style="width:100%;height:400px;"></div>
 
 
     {# Informations sur la boutique à l'id = $id  #}
     {% for boutique in boutiques %}
-            {% if boutique.id == id %}
-        <div class="infoBoutique">
+
+        {% if boutique.latitude is null and boutique.longitude is null %}
+            <div id="map2" style="width:100%;height:400px;"></div>
+        {% endif %}
+
+        {% if boutique.id == id %}
+
+
+                <div class="infoBoutique">
             <div class="col-1-boutique">
                 <div class="imgBoutique"><a href="#"><img class="imgBoutique" style=" overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a></div>
             </div>
@@ -78,6 +84,9 @@
     {# Tous les produits de la boutique à l'id = $id  #}
 
     <h3 class="produitBoutique">Nos produits</h3>
+
+
+
     {% for produit in produits %}
         {% if produit.boutiqueId == id %}
 
@@ -124,9 +133,16 @@
                 </form>
             </div>
 
-
-
         {% endif %}
+    {% for i in 1..10 %}
+
+        {% if (produit.boutiqueId == id) is empty %}
+                {% if i == 1 %}
+                <p>Cette boutique n'a aucune produit pour le moment.</p>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+
     {% endfor %}
 
 

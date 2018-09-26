@@ -4,17 +4,62 @@
 {% block stylesheets %}
     {# On charge le css qui se trouvent dans base.html.twig #}
     {{ parent() }}
+
+    <style>
+
+
+
+        .formulaire{
+            background-color: white;
+            margin: 50px 50px 100px 40%;
+            width: 150px;
+        }
+
+        .fos_user_profile_edit input{
+            width: 300px;
+            margin : 6px 5px;
+            font-size: 20px;
+            padding: 3px 3px;
+            border: none;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fos_user_profile_edit label{
+            display: block;
+            text-align: left;
+            color: #bbb;
+        }
+
+        .fos_user_profile_edit input[type=submit]{
+            background-color: #931969;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            padding: 3px 5px;
+            margin: 5px;
+            margin-left: 55px;
+            width: 200px;
+            font-size: 15px;
+        }
+
+
+
+    </style>
 {% endblock %}
 
 
 {% block fos_user_content %}
     <div class="profile-container">
-    <h2 class="profile">Modifier profile</h2>
-    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
-    </div>
-    {{ form_end(form) }}
+        <h2 class="profile">Modifier profile</h2>
+        <div class="formulaire">
+            {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+            {{ form_widget(form) }}
+
+            <div>
+                <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock fos_user_content %}

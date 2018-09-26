@@ -28,10 +28,15 @@ class ProduitsController extends Controller
         $value = "";
 
         $em = $this->getDoctrine()->getEntityManager();
-        $produit = $em->getRepository("CRShopBundle:Produits")->findAll();
+        $listeProduit = $em->getRepository("CRShopBundle:Produits")->findAll();
         $boutiques = $em->getRepository("CRShopBundle:Boutique")->findAll();
         $user = $this->getUser();
 
+        $produit  = $this->get('knp_paginator')->paginate(
+            $listeProduit,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+            9/*nbre d'éléments par page*/
+        );
 
         if($session->has('panier'))
             $panier = $session->get('panier');
@@ -45,7 +50,8 @@ class ProduitsController extends Controller
             'produits'=>$produit,
             'panier'=> $panier,
             'boutiques'=>$boutiques,
-            'user'=>$user
+            'user'=>$user,
+
         ));
     }
 
@@ -91,6 +97,7 @@ class ProduitsController extends Controller
 
         if($this->getUser() != null ) {
 
+            $userName = $this->getUser()->getUsername();
 
                 // On crée un objet Produit
             $produit = new Produits();
@@ -160,7 +167,8 @@ class ProduitsController extends Controller
             // On passe la méthode createView() du formulaire à la vue
             // afin qu'elle puisse afficher le formulaire toute seule
             return $this->render('CRShopBundle:Vendeur:ajoutproduit.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'user'=>$userName
             ));
 
         } else {

@@ -36,36 +36,25 @@ class ProfilvendeuroccController extends Controller
 
         // On ajoute les champs de l'entité que l'on veut à notre formulaire
         $formBuilder
-            ->add('dateInscription',      DateType::class, array(
-                'placeholder' => array(
-                    'year' => $today['year'], 'month' => $today['mon'], 'day' => $today['mday']
-                )
+            ->add('dateInscription', DateType::class, array(
+                'data' => new \DateTime(),
+                "widget"=>'single_text'
             ))
             ->add('userId',     HiddenType::class, array(
                 'data' => $userId
             ))
-            ->add('adresseBoutique',    TextType::class, array(
-                'data' => 'Adresse',
+            ->add('nom',   TextType::class)
+            ->add('adresseBoutique',    TextType::class)
+            ->add('codePostal',    TextType::class)
+            ->add('image',    TextType::class)
+            ->add('ville',    TextType::class)
+            ->add('pays',    TextType::class)
+            ->add('description',    TextareaType::class)
+            ->add('latitude',    HiddenType::class)
+            ->add('longitude',    HiddenType::class)
+            ->add('save',      SubmitType::class, array(
+                'label'=> 'Enregistrer'
             ))
-            ->add('codePostal',    TextType::class, array(
-                'data' => 'Code postal',
-            ))
-            ->add('image',    TextType::class, array(
-                'data' => 'Image',
-            ))
-            ->add('ville',    TextType::class, array(
-                'data' => 'Ville',
-            ))
-            ->add('pays',    TextType::class, array(
-                'data' => 'Pays',
-            ))
-            ->add('latitude',    HiddenType::class, array(
-                'data' => 'lat',
-            ))
-            ->add('longitude',    HiddenType::class, array(
-                'data' => 'lng',
-            ))
-            ->add('save',      SubmitType::class)
         ;
         // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard
 

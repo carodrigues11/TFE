@@ -94,11 +94,13 @@ class Boutique
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date_inscription", type="date")
      */
     private $dateInscription;
 
+    public function __construct()
+    {
+        $this->dateInscription = new \DateTime();
+    }
 
     /**
      * Get id

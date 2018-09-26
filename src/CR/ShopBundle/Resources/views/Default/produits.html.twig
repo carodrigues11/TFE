@@ -52,8 +52,9 @@
             <div class="triProduit">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary triBtn">Distance</button>
-                    <a href="{{ path('produits',{'tri': 'prix', 'order':'asc'}) }}"><button type="button" class="btn btn-primary triBtn">Prix</button></a>
-                    <button type="button" class="btn btn-primary triBtn">Popularité</button>
+                    <button type="button" class="btn btn-primary triBtn triAlpha">Alphabétique</button>
+                    <button type="button" class="btn btn-primary triBtn">Prix</button>
+                    <button type="button" class="btn btn-primary triBtn" style="border-left: none">Popularité</button>
                 </div>
 
             </div>
@@ -65,50 +66,56 @@
 
             {% for produit in produits %}
 
-                <!-- Produit -->
-                <div class="produitAll col-md-4" style="display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
-                    <!-- image qui ouvre une modal  -->
-                    <div class="imgProduit" data-toggle="modal" data-target="#modalProduit{{ produit.id }}" style=" height: 250px; overflow: hidden;">
-                        <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
+                <div class="blockProduit">
+                        <!-- Produit -->
+                    <div class="produitAll col-md-4" style="text-align:center; display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                        <!-- image qui ouvre une modal  -->
+                        <div class="imgProduit" data-toggle="modal" data-target="#modalProduit{{ produit.id }}" style=" height: 250px; overflow: hidden;">
+                            <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
 
-                    </div> <!-- Image modal - end -->
+                        </div> <!-- Image modal - end -->
 
-                    <div class="contentProduit">
-                        <div class="nomProduit">{{ produit.nom }}</div>
-                        <div class="prixProduit">{{ produit.prix }} €/Kg</div>
-                        {% if panier[produit.id] is not defined %}
+                        <div class="contentProduit">
+                            <div class="nomProduit">{{ produit.nom }}</div>
+                            <div class="prixProduit">{{ produit.prix }} €/Kg</div>
+                            {% if panier[produit.id] is not defined %}
 
-                        <div class="quantitéProduit">
-                            <form action="{{ path('ajouter',{'id':produit.id})}}" method="get">
-                                <select class="quantite" name="quantite">
-                                {% for i in 1..10 %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                                </select>
-                                <div class="btnProduit">
-                                    <button  class="btn-primary editBtn" style="width: 90%; text-align: center;">Ajouter au panier</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        {% else %}
-                        <form action="{{ path('ajouter', { 'id' : produit.id}) }}" method="get">
-                            <div class="quantite">Modifier les quantités:</div>
-                            <div>
-                                <select class="quantite" name="quantite" onchange="this.form.submit()">
+                            <div class="quantitéProduit">
+                                <form action="{{ path('ajouter',{'id':produit.id})}}" method="get">
+                                    <select class="quantite" name="quantite">
                                     {% for i in 1..10 %}
-                                        <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                        <option value="{{ i }}">{{ i }}</option>
                                     {% endfor %}
-                                </select>
+                                    </select>
+                                    <div class="btnProduit">
+                                        <button  class="btn-primary editBtn" style="width: 90%; text-align: center;">Ajouter au panier</button>
+                                    </div>
+                                </form>
                             </div>
 
-                        </form>
-                        {% endif %}
+                            {% else %}
+                            <form action="{{ path('ajouter', { 'id' : produit.id}) }}" method="get">
+                                <div class="quantite">Modifier les quantités:</div>
+                                <div>
+                                    <select class="quantite" name="quantite" onchange="this.form.submit()">
+                                        {% for i in 1..10 %}
+                                            <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 
 
             {% endfor %}
+
+
+            <div class="text-center">{{ knp_pagination_render(produits) }}</div>
+
 
         {% endblock %}
 
@@ -135,8 +142,10 @@
                                 </div>
                                 <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top;">
                                     <div class="nomProduitModal">{{ produit.nom }}</div>
-                                    <div class="producteurProduitModal"><a href="{{ path('boutique', { 'id': produit.boutiqueId }) }}">{{ boutique.nom }}</a> </div>
-                                    <div class="distanceProduitModal"><a href="map">Distance + lien map</a> </div>
+                                    <div class="lieu">
+                                        <div class="producteurProduitModal" style="display: block"><a href="{{ path('boutique', { 'id': produit.boutiqueId }) }}">{{ boutique.nom }}</a> </div>
+                                        <div class="distanceProduitModal" style="display: block"><a href="map"><script>if(dist_km != 0) {document.write("- "+  dist_km  +" km");}</script></a> </div>
+                                    </div>
                                     <div class="prixProduitModal">{{ produit.prix }} €/Kg</div>
                                     <div class="descriptionProduitModal">{{ produit.description }}</div>
                                     {% if panier[produit.id] is not defined %}
@@ -205,6 +214,25 @@
                     </div>
                 </div>
 
+
+                <script>
+                    //Calculer distance
+
+
+                    var latitude = {{ boutique.latitude }};
+                    var longitude = {{ boutique.longitude }};
+
+                    var lat2 = 50.454545;
+                    var lon2 = 4.454545;
+
+                    var dist_metres = 11*10000*Math.sqrt(Math.pow(latitude-lat2,2)+Math.pow(longitude-lon2,2));
+                    var dist_km = Math.round((100 / (dist_metres/1000)) * 100) / 100;
+
+
+
+
+                </script>
+
             {% endfor %}
         {% endfor %}
 
@@ -224,6 +252,15 @@
                 }
 
             });
+
+
+
+
+
+
+
+
+
 
 
             </script>
