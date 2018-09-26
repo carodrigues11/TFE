@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="rond rondActif"><a href="{{ path('paiement_adresse') }}">1</a></div><div class="bar barActive"></div><div class="rond rondActif"><a href="{{ path('paiement_detail') }}">2</a></div><div class="bar barActive"></div><div class="rond rondActif"><a href="{{ path('paiement_detailAll') }}">3</a></div><div class="bar barActive"></div><div class="rond rondActif"><a href="{{ path('paiement_type') }}">4</a></div>
+
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+        <h3>Type de paiement:</h3>
+
+        <div class="livraison">
+            <a href="/TFE/web/app_dev.php/paiement/detailAll">
+                <h4>PayPal</h4>
+                <div style="text-align: center; margin-left: 63px;">
+                    <img src="{{ asset('directory/img/paypal.png') }}" style="width: 100px; display: block; margin-bottom: -20px"/>
+                    <img src="{{ asset('directory/img/paypal2.png') }}" style="width: 100px; display: block;"/>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="livraison">
+            <a href="/TFE/web/app_dev.php/paiement/detailAll">
+                <h4>Visa/mastercard</h4>
+                <div style="text-align: center; margin-left: 63px;">
+                    <img src="{{ asset('directory/img/visa.png') }}" style="width: 100px; display: block;"/>
+                    <img src="{{ asset('directory/img/mastercard.png') }}" style="width: 100px; display: block;"/>
+                </div>
+            </a>
+
+        </div>
+
+
+
+    {% else %}
+        <div><b><a href="/TFE/web/app_dev.php/login">Connectez-vous</a></div>
+    {%endif%}
+
+
+
+
+{% endblock %}

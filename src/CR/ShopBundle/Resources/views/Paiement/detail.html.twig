@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="rond rondActif"><a href="{{ path('paiement_adresse') }}">1</a></div><div class="bar barActive"></div><div class="rond rondActif"><a href="{{ path('paiement_detail') }}">2</a></div><div class="bar"></div><div class="rond">3</div><div class="bar"></div><div class="rond">4</div>
+
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+        <h3 style="margin-top: 100px">Choix de livraison:</h3>
+
+        <div class="livraison">
+            <a href="/TFE/web/app_dev.php/paiement/detailAll">
+                <h4>Standard</h4>
+                <img src="{{ asset('directory/img/livraison.png') }}"/>
+                <p style="color: #ccc; margin: 20px 0;">Prix Livraison €</p>
+            </a>
+
+        </div>
+
+        <div class="livraison">
+            <a href="/TFE/web/app_dev.php/paiement/detailAll">
+                <h4>Express</h4>
+                <img src="{{ asset('directory/img/express.png') }}"/>
+                <p style="color: #ccc; margin: 20px 0;">Prix Livraison € + Tarif Express</p>
+            </a>
+
+        </div>
+
+
+
+    {% else %}
+        <div><b><a href="/TFE/web/app_dev.php/login">Connectez-vous</a></div>
+    {%endif%}
+
+
+
+
+{% endblock %}

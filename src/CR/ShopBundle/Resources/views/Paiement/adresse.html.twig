@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="rond rondActif"><a href="{{ path('paiement_adresse') }}">1</a></div><div class="bar"></div><div class="rond">2</div><div class="bar"></div><div class="rond">3</div><div class="bar "></div><div class="rond ">4</div>
+
+
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+        <div class="nomPaiement">Connecté en tant que {{ user.username }}</div>
+        <div class="adresse_paiement">
+            {% if user.adresse %}
+                <a href="{{ path('paiement_detail') }}">
+                    <h4>Utiliser cette adresse:</h4>
+                    <div class="adressePaiement">{{ user.adresse }}</div>
+                    <div class="adressePaiement">{{ user.ville }} - {{ user.codePostal }}</div>
+                    <div class="adressePaiement">{{ user.pays }}</div>
+                </a>
+            {% endif %}
+        </div>
+
+
+        <div class="nvelle_adresse_paiement">
+            <h4>Livrer à une adresse différente: </h4>
+            <input type="text" class="nvelleRue" placeholder="Adresse">
+            <input type="text" class="nvelleRue" placeholder="Ville">
+            <input type="text" class="nvelleRue" placeholder="Code postal">
+            <input type="text" class="nvelleRue" placeholder="Pays">
+        </div>
+
+
+
+
+
+
+
+    {% else %}
+        <div><b><a href="/TFE/web/app_dev.php/login">Connectez-vous</a></div>
+    {%endif%}
+
+
+
+
+{% endblock %}

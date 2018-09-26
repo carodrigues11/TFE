@@ -103,6 +103,11 @@
             <div class="btnAchat">
                 <a href="{{ path('produits') }}" class="btn-primary panierBtn">Continuer mes achats</a>
             </div>
+
+            <div class="btnPaiement">
+                <a href="{{ path('paiement_adresse') }}" class="btn-primary panierBtn">Passer au paiement</a>
+            </div>
+
             <div class="btnPaiement">
                 <div id="status">
                     <form action="{{ path('paiement_checkout') }}" method="POST">

@@ -88,6 +88,24 @@ paiement_checkout:
   path: /paiement_checkout
   defaults: { _controller: CRShopBundle:Paiement:checkout }
 
+paiement_adresse:
+  path: /paiement/adresse
+  defaults: { _controller:CRShopBundle:Paiement:adresse }
+
+paiement_detail:
+  path: /paiement/detail
+  defaults: { _controller:CRShopBundle:Paiement:detail }
+
+paiement_detailAll:
+  path: /paiement/detailAll
+  defaults: { _controller:CRShopBundle:Paiement:detailAll }
+
+paiement_type:
+  path: /paiement/type
+  defaults: { _controller:CRShopBundle:Paiement:type }
+
+
+
 categorie:
   path: /categorie/{id}
   defaults: { _controller: CRShopBundle:Categorie:index }

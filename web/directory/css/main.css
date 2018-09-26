@@ -660,6 +660,135 @@ h3.produitBoutique{
 }
 
 
+/*                  PAIEMENT    */
+
+
+.rond{
+    border: 1px solid lightgrey;
+    border-radius: 23px;
+    display: inline-block;
+    font-size: 23px;
+    padding: 5px 15px;
+    color: lightgrey;
+}
+
+.rondActif{
+    border: 1.5px solid #931969;
+    color: #931969;
+}
+
+.bar{
+    height: 1px;
+    background-color: lightgrey;
+    display: inline-block;
+    width: 170px;
+    vertical-align: middle;
+}
+
+.barActive{
+    background-color: #931969;
+
+}
+
+.rondActif:hover{
+    color: white;
+    background-color: #931969;
+}
+
+
+
+
+.adresse_paiement{
+    width: 300px;
+    height: 250px;
+    text-align: left;
+    display: inline-block;
+    margin: 100px 100px 200px 100px;
+    font-size: 17px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 50px 40px 35px 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px #ddd;
+
+}
+
+.adresse_paiement:hover{
+    border: 1px solid #931969;
+    box-shadow: 7px 3px 20px #ddd;
+
+}
+
+.adresse_paiement:hover .adresse_paiement{
+    color: #931969;
+}
+
+
+
+.adresse_paiement a{
+    color: grey;
+    text-decoration: none;
+}
+
+.adressePaiement{
+    margin-left: 15px;
+}
+
+.nvelle_adresse_paiement{
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    margin: 100px 100px 200px 100px;
+    font-size: 17px;
+
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 25px 50px 55px 50px;
+}
+
+.nvelle_adresse_paiement input{
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-left: 15px;
+    padding: 2px 5px;
+    color: #eee;
+}
+
+.nvelleRue{
+    display: block;
+    vertical-align: top;
+    margin: 5px;
+    color: #eee;
+}
+
+.livraison{
+    width: 300px;
+    height: 270px;
+    display: inline-block;
+    margin: 50px 80px 200px 80px;
+    font-size: 17px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 30px 40px 35px 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px #ddd;
+    vertical-align: top;
+}
+
+.livraison img{
+    margin-top: 20px;
+}
+
+.livraison a{
+    text-decoration: none;
+}
+
+.livraison:hover{
+    border: 1px solid #931969;
+    box-shadow: 7px 3px 20px #ddd;
+
+}
+
 
 /*        Devenir vendeur      */
 
