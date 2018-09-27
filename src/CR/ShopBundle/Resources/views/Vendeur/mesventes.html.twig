@@ -3,8 +3,50 @@
 {% block vendeur %}
     <h1>Mes ventes</h1>
 
+    <p style="color: lightgray;"> Historique de vos ventes</p>
+
+    {% for commande in commandes %}
+        <div class="commande" style="width: 500px; border: 1px solid #eee; border-radius: 3px; box-shadow: 3px 3px 3px lightgray; margin: 20px 10px 20px 0; padding: 15px">
+            <div class="infoCommande"><b>N° de commande:</b> {{ commande.id }}</div>
+            <div class="infoCommande"><b>N° de commande:</b> {{ commande.numCommande }}</div>
+            <div class="infoCommande"><b>Total:</b> {{ commande.prixTotal }} €</div>
+            <div class="infoCommande"><b>Status:</b> {{ commande.status }} </div>
+            <div>Détails:</div>
+            <div style="margin-left: 20px">
+                <p>Détails produits</p>
+                {% if commande.id == comm_pro_id  %}
+                    {% for produits in produit %}
+                        {% if produitsId == produit.id %}
+                            <div>{{ produit.nom }}</div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
 
 
 
+
+
+
+    {% block javascripts %}
+        <script>
+            function masquer_div(id)
+            {
+                if (document.getElementById(id).style.visibility == 'hidden')
+                {
+                    document.getElementById(id).style.visibility = 'visible';
+                    document.getElementById(id).style.height = '170px';
+                }
+                else
+                {
+                    document.getElementById(id).style.visibility = 'hidden';
+                    document.getElementById(id).style.height = '0';
+
+                }
+            }
+        </script>
+    {% endblock %}
 
 {% endblock %}

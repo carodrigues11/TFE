@@ -4,10 +4,14 @@
 <html>
     <body class="bodyProduit">
 
+
+
+
+
         <div class="filtreTri">
             {# FILTRES DES PRODUITS #}
-            <h4 class="btnFiltre">Filtres:</h4>
-            <div class="filtreProduit">
+            <button  onclick="masquer_div('a_masquer');" value="">Filtres</button>
+            <div id="a_masquer" style="visibility:hidden; height: 0; padding: 2px 5px;">
                 <div class="filtre">
                     <h6>Catégories</h6>
                     <ul class="listeCategorie">
@@ -22,7 +26,7 @@
                     <!-- Default Slider -->
                     <div class="sliderDistance">
                         <input class="mdl-slider mdl-js-slider distanceFiltre" type="range"
-                           min="0" max="100" value="50" tabindex="0">
+                               min="0" max="100" value="50" tabindex="0">
                     </div>
                 </div>
                 <div class="filtre">
@@ -45,6 +49,7 @@
                         <input type="checkbox" class="checkbox" >
                     </div>
                 </div>
+
             </div>
 
             {# TRI DES PRODUITS #}
@@ -254,15 +259,27 @@
 
 
 
-
-
-
-
-
-
-
-
             </script>
+
+
+            <script>
+                function masquer_div(id)
+                {
+                    if (document.getElementById(id).style.visibility == 'hidden')
+                    {
+                        document.getElementById(id).style.visibility = 'visible';
+                        document.getElementById(id).style.height = '170px';
+                    }
+                    else
+                    {
+                        document.getElementById(id).style.visibility = 'hidden';
+                        document.getElementById(id).style.height = '0';
+
+                    }
+                }
+            </script>
+
+
         {% endblock %}
 
     </body>

@@ -53,7 +53,13 @@
         <div class="formulaire">
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
             {{ form_widget(form) }}
+
                 <div>
+                    <span class="mdl-list__item-secondary-action" style=" margin: 5px; width: 200px">
+                      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
+                        <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" style="background-color: #931969;" /><a href="{{ path('condition') }}">Conditions générales</a>
+                      </label>
+                    </span>
                     <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'registration.submit'|trans }}" />
                 </div>
             {{ form_end(form) }}

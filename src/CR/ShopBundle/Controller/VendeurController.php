@@ -63,9 +63,52 @@ class VendeurController extends Controller
             if( $this->isGranted('ROLE_VENDEUR_OCC') ) {
                 return $this->render('CRShopBundle:Vendeur:error.html.twig');
             }
+
+
+
+            $userId = $this->getUser()->getId();
+
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $boutique = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
+            $boutiqueId = $boutique->getId();
+            $commandes = $em->getRepository("CRShopBundle:Commandes")->findBy(['boutiqueId'=>$boutiqueId]);
+
+            for($i=0;$i<count($commandes);$i++){
+                $commandeId[] = $commandes[$i]->getId();
+            }
+
+            $commPro = $em->getRepository("CRShopBundle:Commande_produit")->findBy(['commandeId'=>$commandeId]);
+
+            for($i=0;$i<count($commPro);$i++){
+                $commProId[] = $commPro[$i]->getProduitId();
+            }
+            $produitsId = $em->getRepository('CRShopBundle:Produits')->findBy(['id'=>$commProId]);
+
+
+
+
+
+            //$produits = $em->getRepository("CRShopBundle:Produits")->findBy(['id'=>$produitsId]);
+
+
+/*
+            echo '<pre>';
+            var_dump($commandes);
+            die();
+*/
+
+
             return $this->render('CRShopBundle:Vendeur:mesventes.html.twig', array(
-                'user'=>$userName
+                'user'=>$userName,
+                'commandes'=>$commandes,
+                'commandeId'=>$commandeId,
+                //'produits'=>$produits,
+                'produitsId'=>$produitsId,
+                'comm_pro_id'=>$commProId,
             ));
+
+
         } else {
             return $this->redirect($this->generateUrl('produits'));
         }
