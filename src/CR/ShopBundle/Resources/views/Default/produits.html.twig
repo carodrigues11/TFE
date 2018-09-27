@@ -143,8 +143,8 @@
                                 <div class="col-md-6" style="width: 49%; display: inline-block; vertical-align: top;">
                                     <div class="nomProduitModal">{{ produit.nom }}</div>
                                     <div class="lieu">
-                                        <div class="producteurProduitModal" style="display: block"><a href="{{ path('boutique', { 'id': produit.boutiqueId }) }}">{{ boutique.nom }}</a> </div>
-                                        <div class="distanceProduitModal" style="display: block"><a href="map"><script>if(dist_km != 0) {document.write("- "+  dist_km  +" km");}</script></a> </div>
+                                        <div class="producteurProduitModal" style="display: inline-block"><a href="{{ path('boutique', { 'id': produit.boutiqueId }) }}">{{ boutique.nom }}</a> </div>
+                                        <div class="distanceProduitModal" style="display: inline-block"><a href="map"><script>if(dist_km != 0) {document.write("- "+  dist_km  +" km");}</script></a> </div>
                                     </div>
                                     <div class="prixProduitModal">{{ produit.prix }} €/Kg</div>
                                     <div class="descriptionProduitModal">{{ produit.description }}</div>
@@ -240,7 +240,6 @@
 
 
 
-
         {% block javascripts %}
             <script>
 
@@ -269,4 +268,10 @@
     </body>
 </html>
 
+{% endblock %}
+{% block footer %}
+    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; vertical-align: bottom">
+        <p>&copy;Pré de chez vous</p>
+        <p>Contact: <a href="mailto:pdcv@gmail.com" style="color:lightgray;">pdcv@gmail.com</a> / <a href="{{ path('condition') }}" style="color:lightgray;">Conditions générales</a> </p>
+    </footer>
 {% endblock %}

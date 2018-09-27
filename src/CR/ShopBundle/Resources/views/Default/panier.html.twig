@@ -107,7 +107,7 @@
             <div class="btnPaiement">
                 <a href="{{ path('paiement_adresse') }}" class="btn-primary panierBtn">Passer au paiement</a>
             </div>
-
+<!--
             <div class="btnPaiement">
                 <div id="status">
                     <form action="{{ path('paiement_checkout') }}" method="POST">
@@ -124,9 +124,16 @@
 
                 </div>
             </div>
+            -->
         </div>
 
     </body>
 </html>
 
+{% endblock %}
+{% block footer %}
+    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; margin-top: 300px; bottom: 0">
+        <p>&copy;Pré de chez vous</p>
+        <p>Contact: <a href="mailto:pdcv@gmail.com" style="color:lightgray;">pdcv@gmail.com</a> / <a href="{{ path('condition') }}" style="color:lightgray;">Conditions générales</a> </p>
+    </footer>
 {% endblock %}

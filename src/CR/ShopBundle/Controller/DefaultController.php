@@ -21,4 +21,11 @@ class DefaultController extends Controller
     }
 
 
+
+    public function conditionAction()
+    {
+        return $this->render('CRShopBundle:Default:condition.html.twig');
+
+    }
+
 }

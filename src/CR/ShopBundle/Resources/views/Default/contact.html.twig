@@ -3,57 +3,27 @@
 {% block body %}
 <html>
     <body>
+    <div style="width: 500px; margin-bottom: 100px; margin-top: 50px; margin-left: 34%; border: 1px solid lightgray; border-radius: 3px; box-shadow: 3px 3px 3px lightgray; padding: 10px;">
+        <h1>Formulaire de contact</h1>
 
-    <h1>Formulaire de contact</h1>
-
-<form class="form-horizontal contact-form" role="form" method="post" action="#">
-    <div class="form-group">
-        <div class="col-md-12">
-            <input type="text" class="form-control" id="name" name="nom"
-                   placeholder="Name" value="Nom" >
+        <div style="font-size: 20px; margin-top: 6 0px;">
+            <div style="margin-bottom: 30px;">Adresse du site:</div>
+            <div>Rue Sans souci, 32</div>
+            <div>1060 Ixelles</div>
+            <div>Belgique</div>
+            <p> <a href="mailto:pdcv@gmail.com" style="color:#931969; font-family: 'DIN Alternate';"><p style="padding: 0; margin: 0">Envoyer un mail</p><p style="padding: 0; margin: 0">pdcv@gmail.com</p></a>.</p>
         </div>
     </div>
-    @if(errors->has('nom'))
-    <span class='help-block'>
-    </span>
-    @endif
-    <div class="form-group">
-        <div class="col-md-12">
-            <input type="email" class="form-control" id="email" name="email"
-                   placeholder="Email" value="email" >
-        </div>
-    </div>
-    @if(errors->has('email'))
-    <span class='help-block'>
-    </span>
-    @endif
-    <div class="form-group">
-        <div class="col-md-12">
-            <input type="text" class="form-control" id="subject" name="objet"
-                   placeholder="Subject" value="objet">
-        </div>
-    </div>
-    @if(errors->has('objet'))
-    <span class='help-block'>
-    </span>
-    @endif
-    <div class="form-group">
-    <div class="col-md-12">
-			<textarea class="form-control" rows="6" name="content"
-                      placeholder="Write Massage"  >Contenu</textarea>
-    </div>
-    @if(errors->has('content'))
-    <span class='help-block'>
-</span>
-@endif
-</div>
-<button type="submit" name="submit" class="btn send-btn">send massage</button>
-
-</form>
 
 
 
     </body>
 </html>
 
+{% endblock %}
+{% block footer %}
+    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; margin-top: 300px; bottom: 0">
+        <p>&copy;Pré de chez vous</p>
+        <p>Contact: <a href="mailto:pdcv@gmail.com" style="color:lightgray;">pdcv@gmail.com</a> / <a href="{{ path('condition') }}" style="color:lightgray;">Conditions générales</a> </p>
+    </footer>
 {% endblock %}

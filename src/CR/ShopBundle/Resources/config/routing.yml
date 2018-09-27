@@ -29,6 +29,10 @@ contact:
   requirements:
           _method:  GET
 
+condition:
+  path: /conditions
+  defaults: { _controller: CRShopBundle:Default:condition }
+
 boutique:
   path: /boutique/{id}
   defaults: { _controller: CRShopBundle:Producteurs:view }

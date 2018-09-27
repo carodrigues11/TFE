@@ -20,7 +20,7 @@
         </div>
 
         <div class="livraison">
-            <a href="/TFE/web/app_dev.php/paiement/detailAll">
+            <a href="/TFE/web/app_dev.php/paiement/detailAll" >
                 <h4>Visa/mastercard</h4>
                 <div style="text-align: center; margin-left: 63px;">
                     <img src="{{ asset('directory/img/visa.png') }}" style="width: 100px; display: block;"/>
@@ -28,9 +28,26 @@
                 </div>
             </a>
 
+            <button>
+
+            </button>
+
         </div>
 
+            <div id="status">
+                <form action="{{ path('paiement_checkout') }}" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_L3sbUfakApQKHBZOd53tWNDq"
+                            data-amount="995"
+                            data-name="oc-stripe"
+                            data-description="Widget"
+                            data-locale="auto"
+                            data-currency="eur">
+                    </script>
+                </form>
 
+            </div>
 
     {% else %}
         <div><b><a href="/TFE/web/app_dev.php/login">Connectez-vous</a></div>
@@ -39,4 +56,10 @@
 
 
 
+{% endblock %}
+{% block footer %}
+    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; margin-top: 300px; bottom: 0">
+        <p>&copy;Pré de chez vous</p>
+        <p>Contact: <a href="mailto:pdcv@gmail.com" style="color:lightgray;">pdcv@gmail.com</a> / <a href="{{ path('condition') }}" style="color:lightgray;">Conditions générales</a> </p>
+    </footer>
 {% endblock %}

@@ -35,15 +35,10 @@ class VendeurController extends Controller
 
             $em = $this->getDoctrine()->getEntityManager();
             $boutiqueId = $em->getRepository("CRShopBundle:Boutique")->findOneBy(['userId'=>$userId]);
-            $listeMesProduit = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
+            $produits = $em->getRepository("CRShopBundle:Produits")->findBy(['boutiqueId'=>$boutiqueId]);
 
 
 
-            $produits  = $this->get('knp_paginator')->paginate(
-                $listeMesProduit,
-                $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-                6/*nbre d'éléments par page*/
-            );
 
 
             return $this->render('CRShopBundle:Vendeur:mesproduits.html.twig',array(
