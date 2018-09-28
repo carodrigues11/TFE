@@ -35,6 +35,13 @@ class Commande_produit
      */
     private $commandeId;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quantite", type="integer")
+     */
+    private $quantite;
+
 
     /**
      * Get id
@@ -92,6 +99,30 @@ class Commande_produit
     public function getCommandeId()
     {
         return $this->commandeId;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return Commande_produit
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
     }
 }
 

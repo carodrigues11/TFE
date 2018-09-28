@@ -2,31 +2,40 @@
 
 {% block vendeur %}
     <h1>Mes ventes</h1>
-
     <p style="color: lightgray;"> Historique de vos ventes</p>
-
-    {% for commande in commandes %}
-        <div class="commande" style="width: 500px; border: 1px solid #eee; border-radius: 3px; box-shadow: 3px 3px 3px lightgray; margin: 20px 10px 20px 0; padding: 15px">
-            <div class="infoCommande"><b>N° de commande:</b> {{ commande.id }}</div>
-            <div class="infoCommande"><b>N° de commande:</b> {{ commande.numCommande }}</div>
-            <div class="infoCommande"><b>Total:</b> {{ commande.prixTotal }} €</div>
-            <div class="infoCommande"><b>Status:</b> {{ commande.status }} </div>
-            <div>Détails:</div>
-            <div style="margin-left: 20px">
-                <p>Détails produits</p>
-                {% if commande.id == comm_pro_id  %}
-                    {% for produits in produit %}
-                        {% if produitsId == produit.id %}
-                            <div>{{ produit.nom }}</div>
+    <div style="display: inline-block;">
+        <div class="commandes" style="display: inline-block;">
+        {% for commande in commandes %}
+            <div class="commande" style="width: 500px; border: 1px solid #eee; border-radius: 3px; box-shadow: 3px 3px 3px lightgray; margin: 20px 10px 20px 0; padding: 15px; vertical-align: top;">
+                <div class="infoCommande"><b>N° de commande:</b> {{ commande.numCommande }}</div>
+                <div class="infoCommande"><b>Total:</b> {{ commande.prixTotal }} €</div>
+                <div class="infoCommande"><b>Status:</b> {{ commande.status }} </div>
+                <div>Détails:</div>
+                <div style="margin-left: 20px">
+                    <p>Produits:</p>
+                    {% for idComProCom in commProComId %}
+                        {% if commande.id == idComProCom %}
+                            {% for produit in produits %}
+                                <div style="height: 50px; margin: 15px"><img  style="width: 50px;height: 50px; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" />
+                                    {{ produit.nom }} - 1Kg
+                                </div>
+                            {% endfor %}
                         {% endif %}
                     {% endfor %}
-                {% endif %}
+
+                </div>
             </div>
+        {% endfor %}
         </div>
-    {% endfor %}
-
-
-
+        <div class="graphe" style="display: inline-block;border: 1px solid #eee; border-radius: 3px; box-shadow: 3px 3px 3px lightgray; margin: 20px 10px 20px 10px; padding: 15px; vertical-align: top;">
+            <select style="text-align: right; border:none; color:#ccc">
+                <option>Cette semaine</option>
+                <option>Ce mois</option>
+                <option>Cette année</option>
+            </select>
+            <div id="graphe" style="width: 500px; height: 300px;"></div>
+        </div>
+    </div>
 
 
 
@@ -46,6 +55,53 @@
 
                 }
             }
+
+
+
+            echarts.init(document.getElementById('graphe')).setOption({
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['Pommes','Poires']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '€'
+                },
+                series: [
+                    {
+                        name:'Pommes',
+                        type:'line',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'Poires',
+                        type:'line',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    }
+                ]
+            });
+
+
+
+
         </script>
     {% endblock %}
 
