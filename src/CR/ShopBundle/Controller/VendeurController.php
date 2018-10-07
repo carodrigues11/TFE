@@ -4,6 +4,7 @@ namespace CR\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CR\ShopBundle\Entity\Produits;
+use CR\ShopBundle\Entity\Messages;
 use Symfony\Component\HttpFoundation\Response;
 
 class VendeurController extends Controller
@@ -145,17 +146,29 @@ class VendeurController extends Controller
 
         $userName = $this->getUser()->getUsername();
 
-
         if($this->getUser() != null ) {
+
             if( $this->isGranted('ROLE_VENDEUR_OCC') ) {
                 return $this->render('CRShopBundle:Vendeur:error.html.twig');
             }
 
+            $userId = $this->getUser()->getId();
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $boutiqueId = $em->getRepository("CRShopBundle:Boutique")->findBy(['userId'=>$userId]);
+            $messages = $em->getRepository("CRShopBundle:Messages")->findBy(['boutiqueId'=>$boutiqueId]);
+            $auteurs = $em->getRepository("AppBundle:User")->findAll();
+
+
+
             return $this->render('CRShopBundle:Vendeur:message.html.twig', array(
-                'user'=>$userName
+                'user'=>$userName,
+                'messages'=>$messages,
+                'auteurs'=>$auteurs,
             ));
+
         } else {
-            return $this->redirect($this->generateUrl('produits'));
+            return $this->redirect($this->generateUrl('vendeur_error'));
         }
 
     }

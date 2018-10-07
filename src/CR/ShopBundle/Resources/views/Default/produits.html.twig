@@ -54,6 +54,8 @@
 
             {# TRI DES PRODUITS #}
             <h4 class="btnTri">Trier par:</h4>
+            <button onclick="trierPrix()">Trier par prix</button>
+
             <div class="triProduit">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary triBtn">Distance</button>
@@ -68,6 +70,14 @@
         <h1 class="titreProduit">Produits</h1>
 
         {% block produits %}
+
+
+
+
+
+
+
+
 
             {% for produit in produits %}
 
@@ -112,8 +122,20 @@
                             </form>
                             {% endif %}
                         </div>
+                        <script>
+                            //Trier par nom
+                            var triPrix = {{ produit.prix }};
+
+                            function trierPrix() {
+                                triPrix.sort();
+                                document.write(triPrix);
+                            }
+
+                        </script>
                     </div>
+
                 </div>
+
 
 
             {% endfor %}
@@ -236,6 +258,10 @@
 
 
 
+
+
+
+
                 </script>
 
             {% endfor %}
@@ -277,6 +303,10 @@
 
                     }
                 }
+
+
+
+
             </script>
 
 

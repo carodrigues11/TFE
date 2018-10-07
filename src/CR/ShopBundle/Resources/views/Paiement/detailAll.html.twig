@@ -66,14 +66,21 @@
                 <dl class="dl-horizontal pull-right">
                     <div class="nbProduit"><dt>Nombre de produits:</dt><dd>{{ nbProduit }}</dd></div>
                     <div class="nbProduit"><dt>Total:</dt> <dd>{{ total }} €</dd></div>
+                    <div style="text-align: right; margin-top: 10px">
+                        <a href="/TFE/web/app_dev.php/paiement/type" class="btn-primary panierBtn">Continuer</a>
+                    </div>
                 </dl>
             </div>
 
         </div>
 
-        <div class="detailPaiement">
-            <h4 style="color:red;">AFFICHER ADRESSE</h4>
+        <div class="detailPaiement" style="text-align: left; margin-left: 30%; color: grey;">
+            <p style="font-size: 24px; color: #333333">Adresse de livraison:</p>
+            <p style="margin: 0; font-size: 20px">Rue du Louvy</p>
+            <p style="margin: 0; font-size: 20px">6060 - Gilly</p>
+            <p style="margin: 0; font-size: 20px">Belgique</p>
         </div>
+
 
 
     {% else %}

@@ -20,22 +20,29 @@
         </div>
 
         <div class="livraison">
-            <a href="/TFE/web/app_dev.php/paiement/detailAll" >
+           <form action="{{ path('panier') }}" method="POST">
                 <h4>Visa/mastercard</h4>
                 <div style="text-align: center; margin-left: 63px;">
                     <img src="{{ asset('directory/img/visa.png') }}" style="width: 100px; display: block;"/>
                     <img src="{{ asset('directory/img/mastercard.png') }}" style="width: 100px; display: block;"/>
                 </div>
-            </a>
 
-            <button>
+               <script
+                       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                       data-key="pk_test_L3sbUfakApQKHBZOd53tWNDq"
+                       data-amount="995"
+                       data-name="Pré de chez vous"
+                       data-description=""
+                       data-locale="auto"
+                       data-currency="eur">
+               </script>
+           </form>
 
-            </button>
 
         </div>
-
+<!--
             <div id="status">
-                <form action="{{ path('paiement_checkout') }}" method="POST">
+                <form action="{# path('paiement_checkout') #}" method="POST">
                     <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_test_L3sbUfakApQKHBZOd53tWNDq"
@@ -48,7 +55,7 @@
                 </form>
 
             </div>
-
+-->
     {% else %}
         <div><b><a href="/TFE/web/app_dev.php/login">Connectez-vous</a></div>
     {%endif%}

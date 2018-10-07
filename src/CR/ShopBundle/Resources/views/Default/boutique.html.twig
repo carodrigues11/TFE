@@ -2,10 +2,68 @@
 
 {% block body %}
 <html>
-    <body>
+<head>
+    <style>
+
+        .formulaireMessage{
+            background-color: white;
+            margin: 50px 50px 50px 31%;
+            width: 320px;
+        }
+
+        .formMsg input{
+            width: 300px;
+            margin : 6px 5px;
+            font-size: 20px;
+            padding: 3px 3px;
+            border: none;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .formMsg textarea{
+            width: 300px;
+            margin : 4px 5px;
+            font-size: 15px;
+            padding: 2px 3px;
+            border: none;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            height: 100px;
+        }
+
+        .formMsg label{
+            display: block;
+            text-align: left;
+            color: #bbb;
+        }
+
+        .formMsg button{
+            background-color: #931969;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            padding: 3px 5px;
+            margin: 5px;
+        }
 
 
 
+
+    </style>
+</head>
+<body id="body">
+
+
+
+<div>
+
+
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 
     {# Informations sur la boutique à l'id = $id  #}
     {% for boutique in boutiques %}
@@ -22,9 +80,14 @@
                 <div class="imgBoutique"><a href="#"><img class="imgBoutique" style=" overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{boutique.image}}" alt="{{ boutique.nom }}" /></a></div>
             </div>
             <div class="col-2-boutique">
+                <div class="btnsBoutique" style="margin-bottom: -50px; text-align: right; margin-right: 50px; color: #931969; font-size: 20px;">
+                    <div data-toggle="modal" data-target="#modalMessage"  style="display: inline-block; padding: 5px;"><i class="far fa-envelope"></i></div>
+                    <div id="like" style="display: inline-block; padding: 5px;"><i id="love" class="far fa-heart"></i></div>
+                </div>
                 <h1 class="nomBoutique"> {{ boutique.nom }}</h1>
-                <div class="distanceBoutique">{{ boutique.adresseBoutique }} {{ boutique.ville }}- <dist id="distance"></dist> KM</div>
+                <div class="distanceBoutique">{{ boutique.adresseBoutique }} {{ boutique.ville }} - <dist id="distance"></dist> KM</div>
                 <div class="descriptionBoutique">{{ boutique.description }} </div>
+
             </div>
         </div>
 
@@ -36,6 +99,13 @@
 
 
         <script>
+
+            //Modif coeur quand on le survole
+            $('#like').click(function () {
+                $('#love').css('color','red')
+                   //$('#love').removeClass('far fa-heart');
+                    //$('#love').addClass('fas fa-hear');
+            });
 
             //Affichage de la Map + curseur à l'adresse de la boutique
             var latitude = {{ boutique.latitude }};
@@ -130,7 +200,6 @@
                         </form>
                     {% endif %}
                 </div>
-                </form>
             </div>
 
 
@@ -235,8 +304,35 @@
     {% endfor %}
 
 
+    <!-- Modal MESSAGE -->
 
 
+
+            <div class="modal fade" id="modalMessage" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Envoyer un message Privé</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <div class="formulaireMessage">
+                                {{ form_start(form) }}
+                                {{ form_widget(form,{ 'attr': {'class': 'formMsg'} }) }}
+                                {{ form_end(form) }}
+                            </div>
+                            {% else %}
+                                <div style="margin: 100px 0;"><b><a href="/TFE/web/app_dev.php/login">Connectez-vous pour envoyer un message</a></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <script>
+        $('#form_date').parent().css('display','none');
+    </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3qCo2eBujbleMezhW0flhbjnZvH9_oUs&callback=initMap"></script>
 
@@ -247,7 +343,7 @@
 
 {% endblock %}
 {% block footer %}
-    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; margin-top: 300px; bottom: 0">
+    <footer style="background-color: #931969; width: 100%; color: white; padding: 15px 0; margin-top: 600px; bottom: 0">
         <p>&copy;Pré de chez vous</p>
         <p>Contact: <a href="mailto:pdcv@gmail.com" style="color:lightgray;">pdcv@gmail.com</a> / <a href="{{ path('condition') }}" style="color:lightgray;">Conditions générales</a> </p>
     </footer>
