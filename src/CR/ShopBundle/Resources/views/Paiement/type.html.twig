@@ -10,8 +10,7 @@
 
         <div class="livraison">
             <a href="/TFE/web/app_dev.php/paiement/detailAll">
-                <h4>PayPal</h4>
-                <div style="text-align: center; margin-left: 63px;">
+                <div style="text-align: center; margin-left: 63px; vertical-align: middle; padding-top: 15px">
                     <img src="{{ asset('directory/img/paypal.png') }}" style="width: 100px; display: block; margin-bottom: -20px"/>
                     <img src="{{ asset('directory/img/paypal2.png') }}" style="width: 100px; display: block;"/>
                 </div>
@@ -20,8 +19,7 @@
         </div>
 
         <div class="livraison">
-           <form action="{{ path('panier') }}" method="POST">
-                <h4>Visa/mastercard</h4>
+           <form action="{{ path('produits') }}" method="POST">
                 <div style="text-align: center; margin-left: 63px;">
                     <img src="{{ asset('directory/img/visa.png') }}" style="width: 100px; display: block;"/>
                     <img src="{{ asset('directory/img/mastercard.png') }}" style="width: 100px; display: block;"/>

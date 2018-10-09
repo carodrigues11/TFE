@@ -10,7 +10,7 @@
 
         <div class="filtreTri">
             {# FILTRES DES PRODUITS #}
-            <button  onclick="masquer_div('a_masquer');" value="">Filtres</button>
+            <button  onclick="masquer_div('a_masquer');" value="" style="border:none; cursor: pointer; font-size: 16px">Filtres <i class="fas fa-caret-right" style="color: gray; vertical-align: middle;"></i></button>
             <div id="a_masquer" style="visibility:hidden; height: 0; padding: 2px 5px;">
                 <div class="filtre">
                     <h6>Catégories</h6>
@@ -54,7 +54,6 @@
 
             {# TRI DES PRODUITS #}
             <h4 class="btnTri">Trier par:</h4>
-            <button onclick="trierPrix()">Trier par prix</button>
 
             <div class="triProduit">
                 <div class="btn-group">
@@ -80,61 +79,62 @@
 
 
             {% for produit in produits %}
+                {% if produit.publie == 1 %}
+                    <div class="blockProduit">
+                            <!-- Produit -->
+                        <div class="produitAll col-md-4" style="text-align:center; display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
+                            <!-- image qui ouvre une modal  -->
+                            <div class="imgProduit" data-toggle="modal" data-target="#modalProduit{{ produit.id }}" style=" height: 250px; overflow: hidden;">
+                                <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
 
-                <div class="blockProduit">
-                        <!-- Produit -->
-                    <div class="produitAll col-md-4" style="text-align:center; display: inline-block; vertical-align: top;  width: 32%; padding: 0;">
-                        <!-- image qui ouvre une modal  -->
-                        <div class="imgProduit" data-toggle="modal" data-target="#modalProduit{{ produit.id }}" style=" height: 250px; overflow: hidden;">
-                            <a href="#"><img  style="width: 90%; overflow: hidden; background-color: #0c5460; text-align: center;" src="{{app.request.basepath}}/directory/img/{{produit.image}}" alt="{{ produit.nom }}" /></a>
+                            </div> <!-- Image modal - end -->
 
-                        </div> <!-- Image modal - end -->
+                            <div class="contentProduit">
+                                <div class="nomProduit">{{ produit.nom }}</div>
+                                <div class="prixProduit">{{ produit.prix }} €/Kg</div>
+                                {% if panier[produit.id] is not defined %}
 
-                        <div class="contentProduit">
-                            <div class="nomProduit">{{ produit.nom }}</div>
-                            <div class="prixProduit">{{ produit.prix }} €/Kg</div>
-                            {% if panier[produit.id] is not defined %}
-
-                            <div class="quantitéProduit">
-                                <form action="{{ path('ajouter',{'id':produit.id})}}" method="get">
-                                    <select class="quantite" name="quantite">
-                                    {% for i in 1..10 %}
-                                        <option value="{{ i }}">{{ i }}</option>
-                                    {% endfor %}
-                                    </select>
-                                    <div class="btnProduit">
-                                        <button  class="btn-primary editBtn" style="width: 90%; text-align: center;">Ajouter au panier</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            {% else %}
-                            <form action="{{ path('ajouter', { 'id' : produit.id}) }}" method="get">
-                                <div class="quantite">Modifier les quantités:</div>
-                                <div>
-                                    <select class="quantite" name="quantite" onchange="this.form.submit()">
+                                <div class="quantitéProduit">
+                                    <form action="{{ path('ajouter',{'id':produit.id})}}" method="get">
+                                        <select class="quantite" name="quantite">
                                         {% for i in 1..10 %}
-                                            <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                            <option value="{{ i }}">{{ i }}</option>
                                         {% endfor %}
-                                    </select>
+                                        </select>
+                                        <div class="btnProduit">
+                                            <button  class="btn-primary editBtn" style="width: 90%; text-align: center;">Ajouter au panier</button>
+                                        </div>
+                                    </form>
                                 </div>
 
-                            </form>
-                            {% endif %}
+                                {% else %}
+                                <form action="{{ path('ajouter', { 'id' : produit.id}) }}" method="get">
+                                    <div class="quantite">Modifier les quantités:</div>
+                                    <div>
+                                        <select class="quantite" name="quantite" onchange="this.form.submit()">
+                                            {% for i in 1..10 %}
+                                                <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </form>
+                                {% endif %}
+                            </div>
+                            <script>
+                                //Trier par nom
+                                var triPrix = {{ produit.prix }};
+
+                                function trierPrix() {
+                                    triPrix.sort();
+                                    document.write(triPrix);
+                                }
+
+                            </script>
                         </div>
-                        <script>
-                            //Trier par nom
-                            var triPrix = {{ produit.prix }};
 
-                            function trierPrix() {
-                                triPrix.sort();
-                                document.write(triPrix);
-                            }
-
-                        </script>
                     </div>
-
-                </div>
+                {% endif %}
 
 
 
